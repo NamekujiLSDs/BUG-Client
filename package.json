@@ -1,0 +1,31 @@
+{
+  "name": "bug-client",
+  "version": "1.0.0",
+  "description": "Basic Utility Gear Client for Krunker.",
+  "homepage": "https://github.com/NamekujiLSDs/BUG-Client#readme",
+  "bugs": {
+    "url": "https://github.com/NamekujiLSDs/BUG-Client/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NamekujiLSDs/BUG-Client.git"
+  },
+  "license": "AGPL-3.0-or-later",
+  "author": "NamekujiLSDs",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "dependencies": {
+    "electron": "^9.4.4",
+    "electron-builder": "^24.9.1",
+    "electron-localshortcut": "^3.2.1",
+    "electron-log": "^5.4.3",
+    "electron-store": "^8.2.0",
+    "electron-updater": "^6.1.7",
+    "node-fetch": "^3.3.2",
+    "path": "^0.12.7",
+    "v8-compile-cache": "^2.4.0"
+  }
+}

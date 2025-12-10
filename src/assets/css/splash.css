@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Gaegu&display=swap");
+
+body {
+    background: #2c2c2c;
+}
+
+html,
+body {
+    app-region: drag;
+}
+
+body {
+    overflow: hidden;
+    font-family: "Gaegu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#logo {
+    animation: drop 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+#logo img {
+    height: 300px;
+
+}
+
+#contentHolder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#clientName {
+    color: white;
+    font-size: 70px;
+    margin-left: 30px;
+}
+
+div#bottomHolder {
+    position: fixed;
+    bottom: 0;
+    left: 10px;
+    color: white;
+    font-size: 20px;
+}
+
+#raw1 {
+    animation-delay: 0ms;
+}
+
+#raw2 {
+    animation-delay: 500ms;
+}
+
+#raw3 {
+    animation-delay: 1000ms;
+}
+
+#raw1,
+#raw2,
+#raw3 {
+    animation: slide 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+
+@keyframes drop {
+    0% {
+        transform: translateY(-100%)
+    }
+
+    100% {
+        transform: translateY(0)
+    }
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(200%)
+    }
+
+    100% {
+        transform: translateX(0)
+    }
+}

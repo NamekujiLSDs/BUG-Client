@@ -1,2 +1,2 @@
-# BUG
-Simple,Secure,Lite Electron client for Krunker.
+# BUG Client
+Basic Utility Gear Krunker Client.
