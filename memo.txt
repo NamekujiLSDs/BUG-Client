@@ -1,0 +1,106 @@
+// ==========================================
+// 1. 軽量化・不要機能の削除 (Safe / Cleanup)
+// ==========================================
+if (userPrefs.safeFlags_removeUselessFeatures) {
+    const uselessFeatures = [
+        'disable-breakpad',            // クラッシュレポート無効化
+        'disable-print-preview',       // 印刷プレビュー無効化
+        'disable-metrics-repo',        // メトリクスリポジトリ無効化
+        'disable-metrics',             // メトリクス収集無効化
+        'disable-2d-canvas-clip-aa',   // 2Dキャンバスのアンチエイリアス無効化（パフォーマンス優先）
+        'disable-bundled-ppapi-flash', // Flash無効化
+        'disable-logging',             // ログ出力無効化
+        'disable-hang-monitor',        // ハング監視無効化
+        'disable-component-update'     // コンポーネント更新無効化
+    ];
+    uselessFeatures.forEach(flag => app.commandLine.appendSwitch(flag));
+
+    if (process.platform === 'darwin') {
+        app.commandLine.appendSwitch('disable-dev-shm-usage'); // macOS向けの共有メモリ設定
+    }
+    console.log('Removed useless features');
+}
+
+// ==========================================
+// 2. 動作最適化・バックグラウンド処理 (Helpful)
+// ==========================================
+if (userPrefs.safeFlags_helpfulFlags) {
+    app.commandLine.appendSwitch('enable-javascript-harmony');       // 最新のJS機能を有効化
+    app.commandLine.appendSwitch('enable-future-v8-vm-features');    // V8エンジンの将来機能を有効化
+    app.commandLine.appendSwitch('enable-webgl');                    // WebGL有効化
+    app.commandLine.appendSwitch('enable-webgl2-compute-context');   // WebGL2 Compute有効化
+    
+    // 【重要】ゲームが非アクティブ時もFPSを低下させない設定
+    app.commandLine.appendSwitch('disable-background-timer-throttling');
+    app.commandLine.appendSwitch('disable-renderer-backgrounding');
+
+    // クリックなしで音声・動画を再生可能にする
+    app.commandLine.appendSwitch('autoplay-policy', 'no-user-gesture-required');
+    
+    console.log('Applied helpful flags');
+}
+
+// ==========================================
+// 3. リソース制限の解除 (Limits)
+// ==========================================
+if (userPrefs.experimentalFlags_increaseLimits) {
+    app.commandLine.appendSwitch('renderer-process-limit', '100');   // レンダラープロセス数上限
+    app.commandLine.appendSwitch('max-active-webgl-contexts', '100');// WebGLコンテキスト数上限
+    app.commandLine.appendSwitch('webrtc-max-cpu-consumption-percentage', '100'); // WebRTCのCPU制限解除
+    app.commandLine.appendSwitch('ignore-gpu-blacklist');            // GPUブラックリスト無効化（強制使用）
+    
+    console.log('Applied flags to increase limits');
+}
+
+// ==========================================
+// 4. 低遅延設定 (Low Latency)
+// ==========================================
+if (userPrefs.experimentalFlags_lowLatency) {
+    app.commandLine.appendSwitch('enable-highres-timer');         // 高分解能タイマー（入力精度向上）
+    app.commandLine.appendSwitch('enable-quic');                  // QUICプロトコル有効化（通信高速化）
+    app.commandLine.appendSwitch('enable-accelerated-2d-canvas'); // 2D描画のハードウェアアクセラレーション
+    
+    console.log('Applied latency-reducing flags');
+}
+
+// ==========================================
+// 5. 実験的な描画・通信設定 (Experimental)
+// ==========================================
+if (userPrefs.experimentalFlags_experimental) {
+    app.commandLine.appendSwitch('disable-low-end-device-mode');     // 低スペックモード無効化
+    app.commandLine.appendSwitch('enable-accelerated-video-decode'); // 動画デコードのGPU加速
+    app.commandLine.appendSwitch('enable-native-gpu-memory-buffers');// ネイティブGPUメモリバッファ使用
+    app.commandLine.appendSwitch('high-dpi-support', '1');           // 高DPIサポート
+    app.commandLine.appendSwitch('ignore-gpu-blacklist');            // (再掲) GPU強制使用
+    app.commandLine.appendSwitch('no-pings');                        // リンク監査の無効化
+    app.commandLine.appendSwitch('no-proxy-server');                 // プロキシを使用せず直接接続
+    
+    console.log('Enabled Experiments');
+}
+
+// ==========================================
+// 6. GPUラスタライズ (GPU Rasterizing)
+// ==========================================
+if (userPrefs.safeFlags_gpuRasterizing) {
+    app.commandLine.appendSwitch('enable-gpu-rasterization'); // 描画処理をGPUにオフロード
+    app.commandLine.appendSwitch('enable-oop-rasterization'); // プロセス外ラスタライズ
+    
+    // 【重要】クラッシュ防止のための設定（特定環境で必須）
+    app.commandLine.appendSwitch('disable-zero-copy'); 
+    
+    console.log('GPU rasterization active');
+}
+
+// ==========================================
+// 7. FPS無制限化 (FPS Uncap)
+// ==========================================
+if (userPrefs.fpsUncap) {
+    app.commandLine.appendSwitch('disable-frame-rate-limit'); // フレームレート制限解除
+    app.commandLine.appendSwitch('disable-gpu-vsync');        // 垂直同期(VSync)無効化
+    app.commandLine.appendSwitch('max-gum-fps', '9999');      // Webカメラ等のFPS上限解除
+    
+    // 入力遅延を回復させるChromiumの機能
+    app.commandLine.appendSwitch('enable-features', 'ImplLatencyRecovery,MainLatencyRecovery');
+    
+    console.log('Removed FPS Cap');
+}

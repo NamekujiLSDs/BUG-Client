@@ -1,5 +1,6 @@
 {
   "name": "bug-client",
+  "productName": "BUG Client",
   "version": "1.0.0",
   "description": "Basic Utility Gear Client for Krunker.",
   "homepage": "https://github.com/NamekujiLSDs/BUG-Client#readme",
@@ -15,11 +16,15 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "electron ."
+    "test": "electron .",
+    "build": "electron-builder --win --x64 --publish never --icon=./src/assets/img/icons/icon.ico --overwrite",
+    "publish": "electron-builder --win --x64 --publish always --icon=./src/assets/img/icons/icon.ico --overwrite"
+  },
+  "devDependencies": {
+    "electron": "^9.4.4",
+    "electron-builder": "^24.9.1"
   },
   "dependencies": {
-    "electron": "^9.4.4",
-    "electron-builder": "^24.9.1",
     "electron-localshortcut": "^3.2.1",
     "electron-log": "^5.4.3",
     "electron-store": "^8.2.0",
@@ -27,5 +32,21 @@
     "node-fetch": "^3.3.2",
     "path": "^0.12.7",
     "v8-compile-cache": "^2.4.0"
+  },
+  "build": {
+    "appId": "basic.utility.gear",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "publish": {
+        "provider": "github",
+        "owner": "NamekujiLSDs"
+      },
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": true
+    }
   }
 }
