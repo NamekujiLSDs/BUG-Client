@@ -6,7 +6,7 @@ const config = new store({
 })
 
 module.exports = {
-    general: {
+    General: {
         adBlocker: {
             title: "AdBlocker",
             type: "cb",
@@ -28,7 +28,7 @@ module.exports = {
             value: config.get("resourceSwapper", false)
         }
     },
-    graphics: {
+    Graphics: {
         unlimitedFps: {
             title: "Unlimited FPS",
             type: "cb",
@@ -48,7 +48,7 @@ module.exports = {
             value: config.get("angleBackend", "default")
         },
     },
-    discordrpc: {
+    DiscordRPC: {
         enableDiscordRpc: {
             title: "Discord RPC",
             type: "cb",
@@ -75,7 +75,7 @@ module.exports = {
             value: config.get("rpcGamemode", true)
         }
     },
-    customize: {
+    Customize: {
         ezcss: {
             title: "EZ CSS",
             type: "select",
@@ -109,7 +109,7 @@ module.exports = {
             value: config.get('exitButton', true)
         }
     },
-    advanced: {
+    Advanced: {
         removeUseless: {
             title: "Disable Useless Features",
             type: "cb",
