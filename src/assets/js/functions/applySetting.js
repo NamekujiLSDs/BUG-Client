@@ -1,8 +1,9 @@
 require("v8-compile-cache")
-const { app } = require("electron")
+const { app, ipcMain, ipcRenderer } = require("electron")
 const log = require("electron-log")
 const os = require('os');
 const path = require("path");
+
 const store = require("electron-store")
 const config = new store({
     // encryptionKey: "BugClient"
@@ -10,6 +11,8 @@ const config = new store({
 
 const settings = require("./settings")
 const menuTimers = require("./menutimer")
+const altM = require("./altmanager")
+
 //起動時のフラグ設定
 const flagSwitch = () => {
     //unlimited fps
@@ -156,6 +159,7 @@ const menuTimer = () => {
         menuTimerCtrl.stop()
     }
 };
+//メニュータイマーの制御
 const menuTimerCtrl = {
     timerId: null,
 
@@ -198,10 +202,57 @@ const saveSetting = (id, val) => {
     }
 };
 
+//DiscordRPCの開始及び制御
+const setDiscordRpc = () => {
+    log.info("RPC START")
+    if (settings["DiscordRPC"]["enableDiscordRpc"]["value"]) {
+        log.info("RPC TRUE")
+        setInterval(() => {
+            const gameInfo = window.getGameActivity()
+            if (gameInfo.mode != null && gameInfo.map != null && gameInfo.class != null) {
+                let rpcDetails = settings["DiscordRPC"]["rpcMap"]["value"] ? "Map - " + gameInfo.map : "Playing Krunker";
+                let rpcState = settings["DiscordRPC"]["rpcGamemode"]["value"] ? "Gamemode - " + gameInfo.mode : "Buggy Buggy";
+                let rpcTime = settings["DiscordRPC"]["rpcTimer"]["value"] ? Math.floor(Date.now() + (gameInfo.time * 1000)) : "";
+                let rpcClass = settings["DiscordRPC"]["rpcClass"]["value"] ? gameInfo.class.name : ""
+                ipcRenderer.send("rpcUpdate", {
+                    details: rpcDetails,
+                    state: rpcState,
+                    largeImageKey: "clientlogo",
+                    largeImageText: "BUG Client",
+                    endTimestamp: rpcTime,
+                }, gameInfo)
+            }
+        }, (500));
+    }
+};
+
+//altManagerの作成及び制御
+const createAltManager = () => {
+    let button = Object.assign(document.createElement('div'), {
+        classList: "button",
+        id: "altManagerBtn",
+        innerText: "Alt Manager",
+        style: "padding-top:5px;padding-bottom:13px;margin-top: 7px;padding-left: 40px;padding-right: 40px;"
+
+    })
+    button.setAttribute("onclick", "window.openAltManager()")
+    document.getElementById("playerHeaderEl").insertAdjacentElement("beforeend", button)
+    window.openAltManager = () => { altM.openAltManager() }
+    window.addAlt = () => { altM.openAddWin() };
+    window.saveAltAccount = () => { altM.saveAlt() }
+    window.altLogin = num => { altM.loginAlt(num) }
+    window.altEdit = num => { altM.editAlt(num) }
+    window.saveAltChange = num => { altM.saveEdit(num) }
+    window.altRemove = num => { altM.removeAlt(num) }
+    window.removeConfirm = num => { altM.removeConfirm(num) }
+}
+
 module.exports = {
     flagSwitch,
     ezcss,
     exitButton,
     saveSetting,
-    menuTimer
+    menuTimer,
+    setDiscordRpc,
+    createAltManager
 }

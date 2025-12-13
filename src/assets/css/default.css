@@ -1,4 +1,4 @@
-/* 設定（ここを変えるだけでデザイン調整可能） */
+/* Ã¨Â¨Â­Ã¥Â®Å¡Ã¯Â¼Ë†Ã£Ââ€œÃ£Ââ€œÃ£â€šâ€™Ã¥Â¤â€°Ã£ÂË†Ã£â€šâ€¹Ã£ÂÂ Ã£Ââ€˜Ã£ÂÂ§Ã£Æ’â€¡Ã£â€šÂ¶Ã£â€šÂ¤Ã£Æ’Â³Ã¨ÂªÂ¿Ã¦â€¢Â´Ã¥ÂÂ¯Ã¨Æ’Â½Ã¯Â¼â€° */
 :root {
     --bg-color: #222;
     --text-color: #777;
@@ -9,7 +9,7 @@
     --c5-color: #333;
 }
 
-/* めぬーたいまーのばしょ */
+/* Ã£â€šÂÃ£ÂÂ¬Ã£Æ’Â¼Ã£ÂÅ¸Ã£Ââ€žÃ£ÂÂ¾Ã£Æ’Â¼Ã£ÂÂ®Ã£ÂÂ°Ã£Ââ€”Ã£â€šâ€¡ */
 #menuTimer {
     position: fixed;
     top: 50%;
@@ -20,7 +20,7 @@
     font-size: 30px;
 }
 
-/* 全画面背景 */
+/* Ã¥â€¦Â¨Ã§â€Â»Ã©ÂÂ¢Ã¨Æ’Å’Ã¦â„¢Â¯ */
 #loadingBg3 {
     position: fixed;
     z-index: 999;
@@ -30,7 +30,7 @@
     place-items: center;
 }
 
-/* テキスト */
+/* Ã£Æ’â€ Ã£â€šÂ­Ã£â€šÂ¹Ã£Æ’Ë† */
 #loadingText {
     position: absolute;
     bottom: 10%;
@@ -39,7 +39,7 @@
     display: none;
 }
 
-/* ロゴ */
+/* Ã£Æ’Â­Ã£â€šÂ´ */
 #clientLogo {
     position: relative;
     z-index: 10;
@@ -59,7 +59,7 @@
     pointer-events: none;
 }
 
-/* --- 個別スタイル --- */
+/* --- Ã¥â‚¬â€¹Ã¥Ë†Â¥Ã£â€šÂ¹Ã£â€šÂ¿Ã£â€šÂ¤Ã£Æ’Â« --- */
 
 .circle1 {
     width: 400px;
@@ -96,12 +96,12 @@
     height: 650px;
     border: 6px dashed var(--c5-color);
     animation: spin-flat 20s infinite linear reverse;
-    /* reverseで逆回転 */
+    /* reverseÃ£ÂÂ§Ã©â‚¬â€ Ã¥â€ºÅ¾Ã¨Â»Â¢ */
 }
 
 
 
-/* --- アニメーション定義 --- */
+/* --- Ã£â€šÂ¢Ã£Æ’â€¹Ã£Æ’Â¡Ã£Æ’Â¼Ã£â€šÂ·Ã£Æ’Â§Ã£Æ’Â³Ã¥Â®Å¡Ã§Â¾Â© --- */
 
 @keyframes spin-flat {
     0% {
@@ -135,4 +135,198 @@
 
 .pathDisplay {
     align-self: center;
+}
+
+/* AltManagerWindow */
+.altListItem {
+    display: flex;
+    background: #fff4;
+    margin: 10px;
+    border-radius: 10px;
+    align-items: center;
+    padding: 5px;
+
+}
+
+.altName {
+    width: -webkit-fill-available;
+    /* margin-left: 30px; */
+    font-size: 20px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+
+.altEdit,
+.altLogin,
+.altRemove {
+    border: 4px solid;
+    padding: 5px;
+    border-radius: 10px;
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+    margin-bottom: unset;
+}
+
+.altLogin {
+    color: #28a745;
+    border-color: #28a745;
+}
+
+.altEdit {
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.altRemove {
+    color: #dc3545;
+    border-color: #dc3545;
+    margin-right: 10px;
+}
+
+div#altHeader {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: sticky;
+    margin-left: 0;
+}
+
+div#altList {
+    display: flex;
+    flex-direction: column;
+}
+
+.altListItem .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px !important;
+}
+
+div#altHeader {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+div#altHeaderTitle {
+    width: -webkit-fill-available;
+    font-size: 25px;
+}
+
+#altHeader .button {
+    width: fit-content;
+    white-space: nowrap;
+    padding: 10px;
+    margin: unset;
+}
+
+div#addAlt {
+    width: 30px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px !important;
+    height: 30px;
+}
+
+div#inputtings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+div#inputtings .button {
+    padding: 15px;
+    margin: 10px;
+    white-space: nowrap;
+    width: fit-content !important;
+    font-size: 25px !important;
+}
+
+.altInputs,
+.altInputs input {
+    margin-top: 10px;
+}
+
+div#altPasswordHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+span.material-icons-outlined.button.passVis {
+    height: 50px;
+    width: 50px;
+    font-size: 35px !important;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    align-items: center;
+    margin-left: 20px;
+}
+
+div#altWarn {
+    border: 4px solid #f002;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #f002 !important;
+    border-radius: 10px;
+    margin-top: 10px;
+    width: fit-content;
+}
+
+div#noAlts {
+    border: 4px solid;
+    border-radius: 10px;
+    padding: 30px 10px;
+    max-height: 100px;
+    height: max-content;
+    text-align: center;
+    font-size: 30px;
+    background: #fff2;
+}
+
+.altRemovePopup {
+    pointer-events: auto;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 15px;
+    text-align: left;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    width: fit-content;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    max-width: 700px;
+    padding: 10px;
+}
+
+
+.altRemovePopup .message {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.altRemovePopup #confirmBtn,
+.altRemovePopup #declineBtn {
+    margin: 5px;
+    width: 40%;
+}
+
+#playerHeaderEl {
+    display: flex;
+}
+
+.headerBar {
+    position: unset;
 }

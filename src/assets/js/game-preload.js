@@ -63,9 +63,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     //showwindowを上書きする
     window.showWindow = (...args) => {
         log.info("SHOW WINDOW")
+        log.info()
         const result = hookedShowWindow(...args);
 
-        if (window.windows[0].tabIndex === 6 || document.getElementsByClassName("settingTab")[window.windows[0].tabIndex].textContent === "Client") {
+        if ((window.windows[0].tabIndex === 6 || document.getElementsByClassName("settingTab")[window.windows[0].tabIndex].textContent === "Client") && args === 1) {
             opensetting.renderSettingsDom()
         } else {
             log.info("else")
@@ -92,12 +93,16 @@ const loadBgSetup = async () => {
     clearPops()
     loadingGame.bgHide()
 };
+//設定の適用
 const applySetting = async () => {
     await waitForElement("body");
     applySettings.exitButton()
     applySettings.ezcss()
     await waitFor(() => window.getGameActivity)
-    applySettings.menuTimer()
+    applySettings.menuTimer();
+    applySettings.setDiscordRpc()
+    await waitForElement("#playerHeaderEl")
+    applySettings.createAltManager()
 };
 
 //ショートカットキーの動作を設定

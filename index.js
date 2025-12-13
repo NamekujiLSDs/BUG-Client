@@ -7,19 +7,9 @@ const localShortcut = require("electron-localshortcut")
 const log = require("electron-log")
 const store = require("electron-store")
 
-//Discrod RPCの設定
-const RPC = require('discord-rpc');
-const rpc = new RPC.Client({ transport: 'ipc' })
-const clientId = '1449338607100887050';
-rpc.login({ clientId: clientId })
-const rpcSetting = () => {
-    rpc.setActivity({
-        pid: process.pid,
-        state: 'Playing Krunker.io',
-        details: 'BUG',
-        startTimestamp: new Date(),
-    })
-}
+const settings = require("./src/assets/js/functions/settings")
+const applySettings = require("./src/assets/js/functions/applySetting")
+
 
 const appVer = app.getVersion()
 
@@ -28,9 +18,27 @@ const config = new store({
 })
 
 
-// Developer Portalで取得したApplication ID
+const RPC = require('discord-rpc');
+const rpc = new RPC.Client({ transport: 'ipc' })
+const clientId = '1449338607100887050';
+const rpcSetting = () => {
+    log.info('Running:RPC SETTING')
+    rpc.setActivity({
+        details: `Playing Krunker`,
+        state: 'Buggy Buggy',
+        largeImageKey: "clientlogo",
+        largeImageText: "BUG-Client",
+        startTimestamp: new Date(),
+    })
+}
+rpc.on("ready", () => {
+    if (settings["DiscordRPC"]["enableDiscordRpc"]["value"]) {
+        rpcSetting()
+    }
+})
+rpc.login({ clientId: clientId })
 
-const applySettings = require("./src/assets/js/functions/applySetting")
+
 
 //DevMode
 autoUpdater.forceDevUpdateConfig = true;
@@ -144,7 +152,7 @@ const makeGameWindow = () => {
         gameWindow.loadURL("https://krunker.io");
     })
     localShortcut.register(gameWindow, "F12", () => {
-        gameWindow.webContents.toggleWebTools()
+        gameWindow.webContents.openDevTools()
     })
     localShortcut.register(gameWindow, "Esc", () => {
         gameWindow.webContents.send("shortcutKey", "ESC")
@@ -164,15 +172,28 @@ const makeGameWindow = () => {
 //flagの設定
 applySettings.flagSwitch()
 
+//RPCの更新
+let lastTimer
+ipcMain.on("rpcUpdate", (e, val, gInfo) => {
+    if ((lastTimer == null && gInfo.time == null) || (lastTimer === 0 && lastTimer == gInfo.time)) {
+        lastTimer = gInfo.time
+    } else if ((lastTimer == null && gInfo.time != null) || (lastTimer === 0 && lastTimer != gInfo.time)) {
+        lastTimer = gInfo.time
+        log.info(val)
+        rpc.setActivity({
+            details: val.details,
+            state: val.state,
+            largeImageKey: "clientlogo",
+            largeImageText: "BUG Client",
+        })
+    }
+})
 
-app.whenReady().then(() => {
-});
 app.on("ready", () => {
     makeSplashWindow()
-    rpcSetting(); // アプリ起動時にRPCも開始
-
 })
 app.on("quit", () => {
     gameWindow.destroy()
     splashWindow.destroy()
 })
+
