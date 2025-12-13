@@ -16,16 +16,8 @@ const rpcSetting = () => {
     rpc.setActivity({
         pid: process.pid,
         state: 'Playing Krunker.io',
-        details: 'BUG Client',
+        details: 'BUG',
         startTimestamp: new Date(),
-        largeImageKey: "clientLogo",
-        largeImageText: "NullPo",
-        buttons: [
-            {
-                label: "About VMC",
-                url: "https://namekujilsds.github.io/VoxMate"
-            }
-        ]
     })
 }
 
