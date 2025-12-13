@@ -16,15 +16,16 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "electron .",
+    "test": "npx electron .",
     "build": "electron-builder --win --x64 --publish never --icon=./src/assets/img/icons/icon.ico --overwrite",
     "publish": "electron-builder --win --x64 --publish always --icon=./src/assets/img/icons/icon.ico --overwrite"
   },
   "devDependencies": {
-    "electron": "^9.4.4",
+    "electron": "^10.4.7",
     "electron-builder": "^24.9.1"
   },
   "dependencies": {
+    "discord-rpc": "^4.0.1",
     "electron-localshortcut": "^3.2.1",
     "electron-log": "^5.4.3",
     "electron-store": "^8.2.0",

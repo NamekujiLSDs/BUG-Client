@@ -1,22 +1,24 @@
 require("v8-compile-cache")
 
-const { app } = require("electron")
+const { app, ipcRenderer } = require("electron")
 const store = require("electron-store")
 const log = require("electron-log")
 const path = require('path');
-
 const config = new store({
-    encryptionKey: "BugClient"
+    // encryptionKey: "BugClient"
 })
 
+//機能の読み込み
 const opensetting = require("./functions/opensetting")
+const loadingGame = require("./functions/loadingGame")
+const defaults = require("./functions/defaults")
+const applySettings = require("./functions/applySetting")
 
 //関数が生成されるまで待つ関数
-const waitFor = (checkFn, interval = 100) => {
+const waitFor = (checkFn, interval = 10) => {
     return new Promise((resolve) => {
         const check = () => {
             const result = checkFn();
-            log.info(result)
             if (result) {
                 resolve(result);
             } else {
@@ -30,7 +32,7 @@ const waitFor = (checkFn, interval = 100) => {
 //要素が存在するかを確認する
 function waitForElement(selector) {
     return new Promise((resolve, reject) => {
-        // 1. 最初からあるかチェック (カンマ区切りなら「どれか1つ」あればヒット)
+        // 1. 最初からあるかチェック
         const el = document.querySelector(selector);
         if (el) return resolve(el);
 
@@ -42,11 +44,18 @@ function waitForElement(selector) {
                 observer.disconnect();
             }
         });
-        observer.observe(document.body, { childList: true, subtree: true });
+
+        // 監視対象を document.body ではなく document.documentElement (<html>) に変更
+        // これならpreloadスクリプトの時点でもNodeが存在するためエラーにならない
+        const targetNode = document.documentElement || document;
+
+        observer.observe(targetNode, { childList: true, subtree: true });
     });
 }
 
+//設定UIの作成
 document.addEventListener("DOMContentLoaded", async () => {
+    window.bugSetting = applySettings.saveSetting
     await waitFor(() => window.windows[0]?.changeTab)
     const hookedShowWindow = window.showWindow.bind(window)
     const hookedChangeTab = window.windows[0].changeTab.bind(window.windows[0])
@@ -74,6 +83,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
 })
 
-log.info("== BUG CLIENT START ==")
+//Loading画面の実装
+const loadBgSetup = async () => {
+    await waitForElement("body");
+    defaults.injectDefaultCss()
+    loadingGame.bgSet();
+    await waitForElement(".clientPop")
+    clearPops()
+    loadingGame.bgHide()
+};
+const applySetting = async () => {
+    await waitForElement("body");
+    applySettings.exitButton()
+    applySettings.ezcss()
+    await waitFor(() => window.getGameActivity)
+    applySettings.menuTimer()
+};
 
-// opensetting.tests()
+//ショートカットキーの動作を設定
+ipcRenderer.on("shortcutKey", (e, key) => {
+    switch (key) {
+        case "ESC": {
+            document.exitPointerLock();
+        }
+    }
+})
+
+loadBgSetup()
+applySetting()
+

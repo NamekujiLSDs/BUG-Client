@@ -1,3 +1,37 @@
+### General
+* AdBlocker
+* Show AltManager
+* Menu Timer
+* Resource Swapper
+
+### Graphics
+* Unlimited FPS
+* Angle Backend
+
+### DiscordRPC
+* Discord RPC
+* Share timer
+* Share class
+* Share map
+* Share gamemode
+
+### Customize
+* EZ CSS
+* Local CSS File
+* Custom CSS URL
+* Exit Button
+
+### Advanced
+* Disable Useless Features
+* Use Better Flags
+* Hardware Acceleration
+* WebGL2 Context
+* High Priority
+* Better Latency
+* Unlimited Resource
+* GPU Rasterizing
+* Experimentals
+
 // ==========================================
 // 1. 軽量化・不要機能の削除 (Safe / Cleanup)
 // ==========================================

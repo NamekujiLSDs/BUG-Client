@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD Checklist App</title>
+    <style>
+        :root {
+            --bg-color: #1e1e1e;
+            --card-bg: #2d2d2d;
+            --text-color: #e0e0e0;
+            --accent-color: #4a90e2;
+            --border-color: #444;
+            --success-color: #4caf50;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* Header & Controls */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .controls button {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-left: 10px;
+            transition: background 0.2s;
+        }
+
+        .controls button:hover {
+            background-color: #3d3d3d;
+        }
+
+        .controls button.primary {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Main Layout */
+        #main-container {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            overflow: hidden;
+        }
+
+        /* Editor Panel (Hidden by default) */
+        #editor-panel {
+            flex: 0 0 300px;
+            display: flex;
+            flex-direction: column;
+            background: var(--card-bg);
+            padding: 10px;
+            border-radius: 8px;
+            transition: margin-left 0.3s ease;
+        }
+
+        #editor-panel.hidden {
+            margin-left: -340px;
+            /* Hide off-canvas */
+        }
+
+        textarea {
+            flex: 1;
+            background-color: #1e1e1e;
+            color: #ddd;
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            font-family: monospace;
+            resize: none;
+            border-radius: 4px;
+        }
+
+        /* List Grid (Parallel View) */
+        #list-view {
+            flex: 1;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: min-content;
+            gap: 15px;
+            padding-right: 5px;
+        }
+
+        /* Category Cards */
+        .category-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            height: fit-content;
+        }
+
+        .category-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--accent-color);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .category-level-1 {
+            font-size: 1.2em;
+            color: #fff;
+        }
+
+        .category-level-2 {
+            font-size: 1.1em;
+            color: #ddd;
+            border-bottom-color: #666;
+        }
+
+        .category-level-3 {
+            font-size: 1.0em;
+            color: #ccc;
+            border-bottom: none;
+            background: #333;
+            padding: 5px;
+            margin-top: 10px;
+        }
+
+        /* Checklist Items */
+        .item-row {
+            margin-bottom: 8px;
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 4px;
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="checkbox"] {
+            transform: scale(1.2);
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        label {
+            cursor: pointer;
+            flex: 1;
+            word-break: break-word;
+        }
+
+        .memo-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #444;
+            color: #aaa;
+            font-size: 0.85em;
+            margin-top: 4px;
+            padding: 2px 0;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .memo-input:focus {
+            border-bottom-color: var(--accent-color);
+            color: #fff;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>MD Checklist</h1>
+        <div class="controls">
+            <button onclick="toggleEditor()">⚙️ 設定・リスト編集</button>
+            <button onclick="resetData()" style="color:#ff6b6b">クリア</button>
+            <button class="primary" onclick="exportResults()">📋 結果をコピー</button>
+        </div>
+    </header>
+
+    <div id="main-container">
+        <div id="editor-panel" class="hidden">
+            <h3 style="margin-top:0">リスト定義 (Markdown)</h3>
+            <textarea id="markdown-input" placeholder="# Category&#10;* Item 1&#10;* Item 2"></textarea>
+        </div>
+
+        <div id="list-view"></div>
+    </div>
+
+    <script>
+        // デフォルトのテンプレート
+        const DEFAULT_MD = `### General
+* AdBlocker
+* Show AltManager
+* Menu Timer
+* Resource Swapper
+
+### Graphics
+* Unlimited FPS
+* Angle Backend
+
+### DiscordRPC
+* Discord RPC
+* Share timer
+* Share class
+* Share map
+* Share gamemode
+
+### Customize
+* EZ CSS
+* Local CSS File
+* Custom CSS URL
+* Exit Button
+
+### Advanced
+* Disable Useless Features
+* Use Better Flags
+* Hardware Acceleration
+* WebGL2 Context
+* High Priority
+* Better Latency
+* Unlimited Resource
+* GPU Rasterizing
+* Experimentals`;
+
+        // State Management
+        const STORAGE_KEY_MD = 'checklist_md_source';
+        const STORAGE_KEY_DATA = 'checklist_user_data';
+
+        let savedData = {}; // { "ItemName": { checked: boolean, memo: string } }
+
+        // Init
+        window.addEventListener('DOMContentLoaded', () => {
+            const storedMd = localStorage.getItem(STORAGE_KEY_MD);
+            const storedData = localStorage.getItem(STORAGE_KEY_DATA);
+
+            document.getElementById('markdown-input').value = storedMd || DEFAULT_MD;
+            if (storedData) {
+                savedData = JSON.parse(storedData);
+            }
+
+            // 初回レンダリング
+            renderList();
+
+            // エディタの変更監視
+            document.getElementById('markdown-input').addEventListener('input', (e) => {
+                localStorage.setItem(STORAGE_KEY_MD, e.target.value);
+                renderList();
+            });
+        });
+
+        // Markdown Parser & Renderer
+        function renderList() {
+            const mdText = document.getElementById('markdown-input').value;
+            const listView = document.getElementById('list-view');
+            listView.innerHTML = '';
+
+            const lines = mdText.split('\n');
+            let currentCard = null;
+
+            lines.forEach(line => {
+                const trimmed = line.trim();
+                if (!trimmed) return;
+
+                // Header Detection (#, ##, ###)
+                if (trimmed.startsWith('#')) {
+                    const level = trimmed.match(/^#+/)[0].length;
+                    const title = trimmed.replace(/^#+\s*/, '');
+
+                    // Create new card for category
+                    const card = document.createElement('div');
+                    card.className = 'category-card';
+
+                    const titleEl = document.createElement('div');
+                    titleEl.className = `category-title category-level-${Math.min(level, 3)}`;
+                    titleEl.textContent = title;
+
+                    card.appendChild(titleEl);
+                    listView.appendChild(card);
+                    currentCard = card;
+                }
+                // List Item Detection (*, -)
+                else if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
+                    const itemName = trimmed.replace(/^[\*\-]\s*/, '');
+
+                    if (!currentCard) {
+                        // Fallback if item appears before any header
+                        const card = document.createElement('div');
+                        card.className = 'category-card';
+                        listView.appendChild(card);
+                        currentCard = card;
+                    }
+
+                    const itemRow = createItemRow(itemName);
+                    currentCard.appendChild(itemRow);
+                }
+            });
+        }
+
+        function createItemRow(itemName) {
+            const div = document.createElement('div');
+            div.className = 'item-row';
+
+            // Checkbox & Label
+            const wrapper = document.createElement('div');
+            wrapper.className = 'checkbox-wrapper';
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = `chk-${itemName}`;
+            // Load state
+            if (savedData[itemName] && savedData[itemName].checked) {
+                checkbox.checked = true;
+            }
+
+            checkbox.addEventListener('change', () => {
+                updateData(itemName, 'checked', checkbox.checked);
+            });
+
+            const label = document.createElement('label');
+            label.htmlFor = `chk-${itemName}`;
+            label.textContent = itemName;
+
+            wrapper.appendChild(checkbox);
+            wrapper.appendChild(label);
+
+            // Memo Input
+            const memo = document.createElement('input');
+            memo.type = 'text';
+            memo.className = 'memo-input';
+            memo.placeholder = '備考 / Memo...';
+            // Load memo
+            if (savedData[itemName] && savedData[itemName].memo) {
+                memo.value = savedData[itemName].memo;
+            }
+
+            memo.addEventListener('input', () => {
+                updateData(itemName, 'memo', memo.value);
+            });
+
+            div.appendChild(wrapper);
+            div.appendChild(memo);
+
+            return div;
+        }
+
+        // Data Handling
+        function updateData(itemName, key, value) {
+            if (!savedData[itemName]) {
+                savedData[itemName] = { checked: false, memo: '' };
+            }
+            savedData[itemName][key] = value;
+            localStorage.setItem(STORAGE_KEY_DATA, JSON.stringify(savedData));
+        }
+
+        // UI Actions
+        function toggleEditor() {
+            const panel = document.getElementById('editor-panel');
+            panel.classList.toggle('hidden');
+        }
+
+        function resetData() {
+            if (confirm('チェック状態とメモをすべて消去しますか？（リスト定義は残ります）')) {
+                savedData = {};
+                localStorage.removeItem(STORAGE_KEY_DATA);
+                renderList();
+            }
+        }
+
+        function exportResults() {
+            let output = "## Checklist Export\n\n";
+            const keys = Object.keys(savedData);
+            let count = 0;
+
+            // 現在表示されているカテゴリ順序を維持するためにDOMから取得するアプローチも可能ですが、
+            // ここでは保存されたデータからチェック済みのものを抽出します。
+
+            // 簡易的にMarkdownの定義順に書き出すため、入力テキストを再パースしてマッチング
+            const mdText = document.getElementById('markdown-input').value;
+            const lines = mdText.split('\n');
+            let currentHeader = "";
+
+            lines.forEach(line => {
+                const trimmed = line.trim();
+
+                if (trimmed.startsWith('#')) {
+                    currentHeader = trimmed;
+                }
+                else if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
+                    const itemName = trimmed.replace(/^[\*\-]\s*/, '');
+                    const data = savedData[itemName];
+
+                    if (data && (data.checked || (data.memo && data.memo.trim() !== ""))) {
+                        // ヘッダーが変わったら出力
+                        if (currentHeader) {
+                            output += `\n${currentHeader}\n`;
+                            currentHeader = ""; // Reset so we don't print it multiple times
+                        }
+
+                        const checkMark = data.checked ? "[x]" : "[ ]";
+                        output += `- ${checkMark} ${itemName}`;
+                        if (data.memo) {
+                            output += `  (Note: ${data.memo})`;
+                        }
+                        output += "\n";
+                        count++;
+                    }
+                }
+            });
+
+            if (count === 0) {
+                alert("チェックされた項目やメモのある項目がありません。");
+                return;
+            }
+
+            navigator.clipboard.writeText(output).then(() => {
+                alert("クリップボードにコピーしました！");
+            });
+        }
+    </script>
+
+</body>
+
+</html>

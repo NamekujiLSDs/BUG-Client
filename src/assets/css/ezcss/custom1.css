@@ -1,0 +1,149 @@
+/* Credits to Qwest500 and AnimeGirl47 :D */
+/* Fetched from https://www.reddit.com/r/KrunkerIO/comments/14omg1u/finished_mostly_the_css_remake/ */
+/* If you are the author(s) of this CSS and would like it removed, please contact a developer in our client discord: https://discord.gg/BxweEFyZFm */
+
+:root {
+    --div-grey: rgb(22 22 22 / 50%);
+    --div-black: rgb(59 58 58 / 0%);
+}
+
+#timerVal {
+    font-size: 30px;
+}
+
+#timerHolder {
+    background-color: rgb(22 22 22 / 40%);
+    padding: 6px;
+    border-radius: 5px;
+    padding-left: 8px;
+    padding-right: 6px;
+}
+
+.weapItem {
+    background-color: rgb(255 255 255 / 0%);
+    margin-bottom: -10px;
+    border-radius: 0px;
+}
+
+.weapIcon {
+    width: 120px;
+    height: 60px;
+}
+
+.weapSkin {
+    background-color: rgb(255 255 255 / 0%);
+    font-size: 0px;
+}
+
+.debugInfo {
+    display: inline-block;
+    vertical-align: top;
+    text-align: right;
+    margin-top: 7px;
+}
+
+#chatInputHolder {
+    background-color: rgb(0 0 0 / 40%);
+}
+
+.greyInlineInner {
+    background-color: rgb(255 255 255 / 0%);
+}
+
+#bottomLeftPlayer,
+#bottomLeftPlayerLeft,
+#bottomLeftPlayerRight,
+#bottomLeftTeamType,
+#bottomLeftTeamName,
+#bottomLeftHealthBar {
+    background-color: rgb(255 255 255 / 0%);
+}
+
+.nHealthBarSeg {
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    background-color: rgba(0, 0, 0, .4);
+}
+
+.weapItemInner {
+    color: rgba(255, 255, 255, .7);
+    background-color: rgb(255 255 255 / 0%);
+    margin: 3px;
+    padding: 2px 10px;
+    display: inline-block;
+}
+
+#chatInputHolder {
+    width: 100%;
+}
+
+#bottomLeftClassImg {
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    border-radius: 10px
+}
+
+#bottomLeftHolder {
+    z-index: 10;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    text-align: left
+}
+
+#bottomLeftHealthBar {
+    display: flex;
+    bottom: 0%;
+    margin: -10px;
+    height: 0px;
+}
+
+.nHealthBarSeg {
+    width: 40px !important;
+    display: inline-block !important;
+    border-radius: 5px !important;
+    margin-right: 6px !important;
+    height: 48px !important;
+    background-color: rgba(0, 0, 0, .4) !important;
+}
+
+.nHpBSeg {
+    height: 48px !important;
+    border-radius: 5px !important;
+    -webkit-box-shadow: inset 0 -10px 0 0 rgba(0, 0, 0, .28) !important;
+    -moz-box-shadow: inset 0 -10px 0 0 rgba(0, 0, 0, .28) !important;
+    box-shadow: inset 0 -10px 0 0 rgba(0, 0, 0, .28) !important
+}
+
+#bottomLeftHealth {
+    position: absolute;
+    background-color: rgba(0, 0, 0, .35);
+    border-radius: 5px;
+    padding: 3px;
+    bottom: 60px;
+    padding-right: 7px;
+    padding-left: 9px;
+    color: #fff;
+    font-size: 20px;
+    will-change: transform;
+    display: inline-block;
+    left: 100px;
+}
+
+#bottomLeftTeamHolder,
+#voiceIcon,
+#recTimer,
+#bottomLeftChallIcon,
+.weapKey,
+.weapStreakHolder {
+    display: none;
+}
+
+#pingDisplay,
+#fpsDisplay {
+    text-align: left;
+}
