@@ -4,7 +4,7 @@ const path = require('path')
 
 
 const bgSet = () => {
-    log.info("BG SET RUN ")
+    // log.info("BG SET RUN ")
     const loadingBg = Object.assign(document.createElement("div"), {
         id: "loadingBg3",
         style: "z-index:999;background:#222;position:fixed;top:0;left:0;right:unset;bottom:unset;width:100%;height:100%;"
@@ -38,7 +38,7 @@ const bgSet = () => {
 };
 
 const bgHide = () => {
-    log.info("Delete Backgound")
+    // log.info("Delete Backgound")
     document.getElementById("loadingBg3").setAttribute("style", "display:none")
 
 };

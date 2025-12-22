@@ -17,8 +17,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npx electron .",
-    "build": "electron-builder --win --x64 --publish never --icon=./src/assets/img/icons/icon.ico --overwrite",
-    "publish": "electron-builder --win --x64 --publish always --icon=./src/assets/img/icons/icon.ico --overwrite"
+    "build": "electron-builder --win --x64 --publish never",
+    "publish": "electron-builder --win --x64 --publish always"
   },
   "devDependencies": {
     "electron": "^10.4.7",
@@ -44,7 +44,8 @@
         "provider": "github",
         "owner": "NamekujiLSDs"
       },
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "/src/assets/img/icons/icon.ico"
     },
     "nsis": {
       "oneClick": true

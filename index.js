@@ -26,15 +26,16 @@ const config = new store({
 });
 
 // DevMode
-autoUpdater.forceDevUpdateConfig = true;
+// autoUpdater.forceDevUpdateConfig = true;
 
 // DiscordRPCの作成
 const RPC = require("discord-rpc");
+const { title } = require("process");
 const rpc = new RPC.Client({ transport: "ipc" });
 const clientId = "1449338607100887050";
 
 const rpcSetting = () => {
-  log.info("Running:RPC SETTING");
+  // log.info("Running:RPC SETTING");
   rpc.setActivity({
     details: `Playing Krunker`,
     state: "Buggy Buggy",
@@ -85,6 +86,8 @@ const makeSplashWindow = () => {
     frame: false,
     resizable: false,
     show: false,
+    title: "BUG Client",
+    icon: path.join(__dirname, './src/assets/img/icons/icon.ico'),
     webPreferences: {
       preload: path.join(__dirname, "./src/assets/js/splash-preload.js"),
     },
@@ -171,6 +174,8 @@ const makeGameWindow = () => {
     width: 800,
     fullscreen: config.get("fullscreen", true),
     show: false,
+    title: "BUG Client",
+    icon: path.join(__dirname, './src/assets/img/icons/icon.ico'),
     webPreferences: {
       preload: path.join(__dirname, "./src/assets/js/game-preload.js"),
     },
@@ -178,7 +183,9 @@ const makeGameWindow = () => {
 
   gameWindow.webContents.loadURL("https://krunker.io/");
   gameWindow.setTitle("BUG Client");
-
+  gameWindow.on("page-title-updated", (e => {
+    e.preventDefault()
+  }))
   // ショートカットキーの設定
   localShortcut.register(gameWindow, "F5", () => {
     gameWindow.reload();
@@ -219,8 +226,8 @@ const initSwapper = (win) => {
   if (!fs.existsSync(swapPath)) {
     fs.mkdir(swapPath, { recursive: true }, (e) => {
       if (e) {
-        log.warn("ERROR IN RESOURCE SWAPPER MKDIR");
-        log.warn(e);
+        // log.warn("ERROR IN RESOURCE SWAPPER MKDIR");
+        // log.warn(e);
       }
     });
   }
@@ -244,8 +251,8 @@ const initSwapper = (win) => {
         }
       });
     } catch (e) {
-      log.warn("ERROR IN RESOURCE SWAPPER SCAN");
-      log.warn(e);
+      // log.warn("ERROR IN RESOURCE SWAPPER SCAN");
+      // log.warn(e);
     }
   };
   recursiveFolder();
@@ -261,7 +268,7 @@ const initSwapper = (win) => {
       adBlockerInstance = new adblock(adBlockPath);
     }
   } catch (e) {
-    log.warn("[AdBlock] Settings check failed:", e);
+    // log.warn("[AdBlock] Settings check failed:", e);
   }
 
   if (swapFiles.length > 0 || adBlockerInstance) {
@@ -282,7 +289,7 @@ const initSwapper = (win) => {
           urlObj.hostname === "krunker.io" ||
           urlObj.hostname.endsWith(".krunker.io");
         if (!isKrunker) {
-          log.info(`[External Request] ${url}`);
+          // log.info(`[External Request] ${url}`);
         }
 
         // スワッパー処理
@@ -299,7 +306,7 @@ const initSwapper = (win) => {
 
         // アドブロック処理
         if (adBlockerInstance && adBlockerInstance.shouldBlock(url)) {
-          log.info(`[AdBlock] Blocked: ${url}`);
+          // log.info(`[AdBlock] Blocked: ${url}`);
           return callback({ cancel: true });
         }
 
@@ -325,7 +332,7 @@ ipcMain.on("rpcUpdate", (e, val, gInfo) => {
     (lastTimer === 0 && lastTimer != gInfo.time)
   ) {
     lastTimer = gInfo.time;
-    log.info(val);
+    // log.info(val);
     rpc.setActivity({
       details: val.details,
       state: val.state,
@@ -337,7 +344,7 @@ ipcMain.on("rpcUpdate", (e, val, gInfo) => {
 
 // ファイル選択画面を開く
 ipcMain.handle("openLocalFileSelect", async (e, val) => {
-  log.info("LOCAL FILE OPEN ID = " + val);
+  // log.info("LOCAL FILE OPEN ID = " + val);
   const filePaths = dialog.showOpenDialogSync(null, {
     properties: ["openFile"],
     title: "Select your CSS file...",
@@ -347,7 +354,7 @@ ipcMain.handle("openLocalFileSelect", async (e, val) => {
       { name: "All Files", extensions: ["*"] },
     ],
   });
-  log.info("OPENED : ", filePaths);
+  // log.info("OPENED : ", filePaths);
   return filePaths;
 });
 

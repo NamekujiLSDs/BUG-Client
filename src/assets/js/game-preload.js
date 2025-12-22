@@ -67,8 +67,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   //showwindowを上書きする
   window.showWindow = (...args) => {
-    log.info("SHOW WINDOW");
-    log.info();
+    // log.info("SHOW WINDOW");
+    // log.info();
     const result = hookedShowWindow(...args);
 
     if (
@@ -81,13 +81,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     ) {
       opensetting.renderSettingsDom();
     } else {
-      log.info("else");
+      // log.info("else");
     }
     return result;
   };
   //changetabを上書きする
   window.windows[0].changeTab = (...args) => {
-    log.info("ChangeTab");
+    // log.info("ChangeTab");
     const result = hookedChangeTab(...args);
     if (
       window.windows[0].tabIndex === 6 ||

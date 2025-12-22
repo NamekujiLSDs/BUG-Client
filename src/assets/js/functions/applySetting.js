@@ -23,7 +23,7 @@ const flagSwitch = () => {
     app.commandLine.appendSwitch(
       "use-angle",
       settings["Graphics"]["angleBackend"]["options"][
-        settings["Graphics"]["angleBackend"]["value"]
+      settings["Graphics"]["angleBackend"]["value"]
       ],
     );
   }
@@ -90,13 +90,13 @@ const flagSwitch = () => {
 const ezcss = () => {
   if (document.getElementById("ezCssHolder")) {
     const ezCss = document.getElementById("ezCssHolder");
-    log.info("val:", settings["Customize"]["urlCss"]["value"]);
-    log.info("type:", typeof settings["Customize"]["urlCss"]["value"]);
+    // log.info("val:", settings["Customize"]["urlCss"]["value"]);
+    // log.info("type:", typeof settings["Customize"]["urlCss"]["value"]);
     switch (settings["Customize"]["ezcss"]["value"]) {
       case "disabled": {
         try {
           document.getElementById("ezCssHolder").setAttribute("href", "");
-        } catch {}
+        } catch { }
         break;
       }
       case "local": {
@@ -114,12 +114,12 @@ const ezcss = () => {
         ezCss.setAttribute(
           "href",
           "bug://" +
-            path.join(
-              __dirname,
-              "../../css/ezcss/" +
-                settings["Customize"]["ezcss"]["value"] +
-                ".css",
-            ),
+          path.join(
+            __dirname,
+            "../../css/ezcss/" +
+            settings["Customize"]["ezcss"]["value"] +
+            ".css",
+          ),
         );
         break;
       }
@@ -149,12 +149,12 @@ const ezcss = () => {
         ezcss.setAttribute(
           "href",
           "bug://" +
-            path.join(
-              __dirname,
-              "../../css/ezcss/" +
-                settings["Customize"]["ezcss"]["value"] +
-                ".css",
-            ),
+          path.join(
+            __dirname,
+            "../../css/ezcss/" +
+            settings["Customize"]["ezcss"]["value"] +
+            ".css",
+          ),
         );
         break;
       }
@@ -222,7 +222,7 @@ const menuTimerCtrl = {
 //設定の保存と適用
 const saveSetting = (id, val) => {
   config.set(id, val);
-  log.info("Setting saved - ", id, " : ", val);
+  // log.info("Setting saved - ", id, " : ", val);
   switch (id) {
     case "urlCss":
     case "ezcss": {
@@ -245,9 +245,9 @@ const saveSetting = (id, val) => {
 //ローカルファイルのハンドル
 const localFileOpen = async (id) => {
   let filepath = await ipcRenderer.invoke("openLocalFileSelect", id);
-  log.info(filepath);
+  // log.info(filepath);
   filepath = filepath[0];
-  log.info(id);
+  // log.info(id);
   saveSetting(id, filepath);
   //ファイル名表示の変更
   switch (id) {
@@ -256,15 +256,15 @@ const localFileOpen = async (id) => {
         document.getElementsByClassName("pathDisplay")[0].innerText =
           path.basename(filepath);
         ezcss();
-      } catch {}
+      } catch { }
     }
   }
 };
 //DiscordRPCの開始及び制御
 const setDiscordRpc = () => {
-  log.info("RPC START");
+  // log.info("RPC START");
   if (settings["DiscordRPC"]["enableDiscordRpc"]["value"]) {
-    log.info("RPC TRUE");
+    // log.info("RPC TRUE");
     setInterval(() => {
       const gameInfo = window.getGameActivity();
       if (

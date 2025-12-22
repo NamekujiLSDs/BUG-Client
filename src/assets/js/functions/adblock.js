@@ -16,7 +16,7 @@ module.exports = class SimpleAdBlocker {
     loadRules(filePath) {
         try {
             if (!fs.existsSync(filePath)) {
-                log.warn(`[AdBlock] File not found: ${filePath}`);
+                // log.warn(`[AdBlock] File not found: ${filePath}`);
                 return;
             }
             const content = fs.readFileSync(filePath, 'utf-8');
@@ -46,12 +46,12 @@ module.exports = class SimpleAdBlocker {
 
                     this.rules.push(new RegExp(pattern, 'i'));
                 } catch (e) {
-                    log.warn(`[AdBlock] Failed to parse rule: ${line}`, e);
+                    // log.warn(`[AdBlock] Failed to parse rule: ${line}`, e);
                 }
             });
-            log.info(`[AdBlock] Loaded ${this.rules.length} rules.`);
+            // log.info(`[AdBlock] Loaded ${this.rules.length} rules.`);
         } catch (e) {
-            log.error('[AdBlock] Error loading rules:', e);
+            // log.error('[AdBlock] Error loading rules:', e);
         }
     }
 
