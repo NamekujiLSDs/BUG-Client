@@ -1,0 +1,6 @@
+||*.criteo.net*
+||*.*.criteo.net*
+||*.criteo.net*
+||*.doubleclick.net*
+||*.*.doubleclick.net*
+||*.googlesyndication.com*
