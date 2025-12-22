@@ -1,0 +1,96 @@
+/* Chroma's Vanilla Plus by Chroma3551 */
+
+/* removal */
+#bottomLeftPlayerLeft,
+#bottomLeftPlayerRight #bottomLeftTeamHolder,
+#bottomLeftTeamType,
+#bottomLeftTeamName,
+#bottomLeftClassImg,
+#bottomLeftTeamHolder,
+#bottomLeftChallIcon {
+    display: none !important
+}
+
+/* bottom left */
+#bottomLeftPlayer {
+    border-radius: 0px;
+    background-color: var(--div-black);
+    display: inline-grid;
+    grid-template-columns: auto 250px auto;
+    /*box-shadow: var(--div-shadow);*/
+    position: fixed;
+    bottom: -20px
+}
+
+/* in game chat */
+#uiBase.onGame #chatHolder {
+    left: 15px;
+    bottom: 15px;
+}
+
+/* health num */
+#bottomLeftHealth {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.3);
+    font-size: 40px;
+    will-change: transform;
+    position: fixed;
+    left: calc(50% - -320px);
+    bottom: 40px
+}
+
+/* health bar */
+#bottomLeftHealthBar {
+    width: 600px;
+    position: fixed;
+    left: calc(50% - 310px);
+    bottom: 50px
+}
+
+.nHealthBarSeg {
+    height: 23px;
+    margin: 0 -4.5px;
+    background: transparent
+}
+
+.nHpBSeg {
+    border-radius: 4px
+}
+
+/* weapon */
+#weapHolder {
+    position: absolute;
+    z-index: 1;
+    right: 15px;
+    bottom: 100px;
+    row-gap: 5px;
+}
+
+.weapItem {
+    position: relative;
+    text-align: right;
+    color: #fff;
+    font-size: 25px;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    border-radius: 4px;
+    background-color: var(--div-black);
+}
+
+/* ammo */
+#ammoHolder {
+    border-radius: 4px;
+    background-color: var(--div-black);
+    display: inline-block;
+    font-size: 30px;
+    letter-spacing: -2px;
+    border-radius: 6px;
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-image: url('../img/blank_2.png');
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+}
