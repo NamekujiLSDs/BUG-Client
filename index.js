@@ -1,5 +1,6 @@
 require("v8-compile-cache");
 
+<<<<<<< HEAD
 const {
   app,
   ipcMain,
@@ -16,6 +17,19 @@ const store = require("electron-store");
 
 const settings = require("./src/assets/js/functions/settings");
 const applySettings = require("./src/assets/js/functions/applySetting");
+=======
+const { app, ipcMain, Menu, protocol, BrowserWindow } = require("electron")
+const path = require('path');
+const { autoUpdater } = require("electron-updater")
+const localShortcut = require("electron-localshortcut")
+const log = require("electron-log")
+const store = require("electron-store")
+const fs = require("fs")
+
+const settings = require("./src/assets/js/functions/settings")
+const applySettings = require("./src/assets/js/functions/applySetting")
+const adblock = require("./src/assets/js/functions/adblock")
+>>>>>>> b5fd6f15b08f666f59a45c83f3fbdcba40c7c7f6
 
 const appVer = app.getVersion();
 
@@ -23,9 +37,20 @@ const config = new store({
   // encryptionKey: "BugClient"
 });
 
+<<<<<<< HEAD
 const RPC = require("discord-rpc");
 const rpc = new RPC.Client({ transport: "ipc" });
 const clientId = "1449338607100887050";
+=======
+//DevMode
+autoUpdater.forceDevUpdateConfig = true;
+
+
+//DiscordRPCの作成をする
+const RPC = require('discord-rpc');
+const rpc = new RPC.Client({ transport: 'ipc' })
+const clientId = '1449338607100887050';
+>>>>>>> b5fd6f15b08f666f59a45c83f3fbdcba40c7c7f6
 const rpcSetting = () => {
   log.info("Running:RPC SETTING");
   rpc.setActivity({
@@ -37,6 +62,7 @@ const rpcSetting = () => {
   });
 };
 rpc.on("ready", () => {
+<<<<<<< HEAD
   if (settings["DiscordRPC"]["enableDiscordRpc"]["value"]) {
     rpcSetting();
   }
@@ -45,6 +71,14 @@ rpc.login({ clientId: clientId });
 
 //DevMode
 autoUpdater.forceDevUpdateConfig = true;
+=======
+    if (settings["DiscordRPC"]["enableDiscordRpc"]["value"]) {
+        rpcSetting()
+    }
+})
+rpc.login({ clientId: clientId })
+
+>>>>>>> b5fd6f15b08f666f59a45c83f3fbdcba40c7c7f6
 
 //プロトコルの実装
 protocol.registerSchemesAsPrivileged([
@@ -145,6 +179,7 @@ const makeSplashWindow = () => {
 
 //ゲームウィンドウを作成する
 const makeGameWindow = () => {
+<<<<<<< HEAD
   gameWindow = new BrowserWindow({
     height: 500,
     width: 800,
@@ -178,7 +213,139 @@ const makeGameWindow = () => {
     splashWindow.destroy();
     gameWindow.show();
   });
+=======
+    gameWindow = new BrowserWindow({
+        height: 500,
+        width: 800,
+        fullscreen: config.get("fullscreen", true),
+        show: false,
+        webPreferences: {
+            preload: path.join(__dirname, "./src/assets/js/game-preload.js")
+        }
+    })
+    gameWindow.webContents.loadURL("https://krunker.io/")
+    gameWindow.setTitle("BUG Client")
+    //ショートカットキーの設定
+    localShortcut.register(gameWindow, "F5", () => {
+        gameWindow.reload()
+    })
+    localShortcut.register(gameWindow, "F6", () => {
+        gameWindow.loadURL("https://krunker.io");
+    })
+    localShortcut.register(gameWindow, "F12", () => {
+        gameWindow.webContents.openDevTools()
+    })
+    localShortcut.register(gameWindow, "Esc", () => {
+        gameWindow.webContents.send("shortcutKey", "ESC")
+    })
+    localShortcut.register(gameWindow, "F11", () => {
+        config.set("fullscreen", !gameWindow.isFullScreen())
+        gameWindow.setFullScreen(!gameWindow.isFullScreen())
+    })
+    Menu.setApplicationMenu(null);
+    if (settings["General"]["resourceSwapper"]["value"]) {
+        initSwapper(gameWindow)
+    }
+    gameWindow.once("ready-to-show", () => {
+        splashWindow.destroy();
+        gameWindow.show();
+    });
+>>>>>>> b5fd6f15b08f666f59a45c83f3fbdcba40c7c7f6
 };
+
+//リソーススワッパー
+const initSwapper = (win) => {
+    const swapPath = path.join(app.getPath('documents'), '/BugSwap');
+    if (!fs.existsSync(swapPath)) {
+        fs.mkdir(swapPath, { recursive: true }, e => {
+            log.warn('ERROR IN RESOURCE SWAPPER');
+            log.warn(e);
+        });
+    }
+
+    const swapFiles = [];
+
+    const recursiveFolder = (prefix = '') => {
+        try {
+            fs.readdirSync(path.join(swapPath, prefix), { withFileTypes: true }).forEach((cPath) => {
+                if (cPath.isDirectory()) {
+                    recursiveFolder(`${prefix}/${cPath.name}`);
+                } else {
+                    const name = `${prefix}/${cPath.name}`;
+                    swapFiles.push({
+                        urlPath: name.replace(/\\/g, '/'),
+                        localPath: path.join(swapPath, name)
+                    });
+                }
+            });
+        } catch (e) {
+            log.warn('ERROR IN RESOURCE SWAPPER');
+            log.warn(e);
+        }
+    };
+    recursiveFolder();
+
+    let adBlockerInstance = null;
+    try {
+        if (settings["General"]["adBlocker"] && settings["General"]["adBlocker"]["value"]) {
+            const adBlockPath = path.join(__dirname, "./src/assets/json/adblock.txt");
+
+            adBlockerInstance = new adblock(adBlockPath);
+        }
+    } catch (e) {
+        log.warn('[AdBlock] Settings check failed:', e);
+    }
+
+    if (swapFiles.length > 0 || adBlockerInstance) {
+        win.webContents.session.webRequest.onBeforeRequest({ urls: ['<all_urls>'] }, (details, callback) => {
+            const url = details.url;
+
+
+
+            let urlObj;
+
+            try {
+                urlObj = new URL(url);
+            } catch (e) {
+                // URLパースエラーの場合はそのまま通す
+                return callback({ cancel: false });
+            }
+
+            // --- A. 外部URLログ出力 (krunker.io 以外) ---
+            // ホスト名が krunker.io でもなく、.krunker.io で終わるものでもない場合
+            const isKrunker = urlObj.hostname === 'krunker.io' || urlObj.hostname.endsWith('.krunker.io');
+            if (!isKrunker) {
+                // log.info で出力（必要に応じて warn 等に変更してください）
+                log.info(`[External Request] ${url}`);
+            }
+
+
+            if (swapFiles.length > 0) {
+                try {
+                    const urlObj = new URL(url);
+                    if (urlObj.hostname.includes('krunker.io')) {
+                        const matchedFile = swapFiles.find(f => urlObj.pathname === f.urlPath);
+                        if (matchedFile) {
+                            const destPath = matchedFile.localPath.replace(/\\/g, '/');
+                            const redirectURL = 'bug://' + destPath;
+
+                            // log.info(`[Swapper] Redirecting: ${url} -> ${redirectURL}`);
+                            return callback({ redirectURL: redirectURL });
+                        }
+                    }
+                } catch (e) {
+                }
+            }
+
+            if (adBlockerInstance && adBlockerInstance.shouldBlock(url)) {
+                log.info(`[AdBlock] Blocked: ${url}`);
+                return callback({ cancel: true });
+            }
+            return callback({ cancel: false });
+        });
+    }
+};
+
 
 //flagの設定
 applySettings.flagSwitch();
@@ -223,8 +390,16 @@ ipcMain.handle("openLocalFileSelect", async (e, val) => {
 });
 
 app.on("ready", () => {
+<<<<<<< HEAD
   makeSplashWindow();
 });
+=======
+    makeSplashWindow()
+})
+
+
+
+>>>>>>> b5fd6f15b08f666f59a45c83f3fbdcba40c7c7f6
 app.on("quit", () => {
   gameWindow.destroy();
   splashWindow.destroy();
