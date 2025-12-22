@@ -2,8 +2,8 @@
 /* Created by NamekujiLSDs#7777*/
 
 /* Last edit 29 Jan 2022 */
-/*↑誰？このクソフォーマット使ってるの。死ねよ*/
 /* Last edit 2025/12/12 */
+
 :root {
     --color-1: #202020;
     --color-2: #aaa;
@@ -40,17 +40,21 @@ div#voiceDisplay,
 #loadInfoRHolder,
 #loadGamNm,
 div#aHider,
-#lC-img {
+#lC-img,
+#signupRewardsButton,
+#notificationCenter,
+#menuLvlHold,
+#menuMiniProfilePic,
+.main-menu-button-container.svelte-f3amho,
+.menuItemRankedLabel {
     display: none !important;
 }
 
-/* --- Ã¢â€ â€˜ Remove Ã¢â€ â€˜ --- */
 /* --- Animation --- */
 @keyframes loadRotate {
     0% {
         transform: translate(-50%, -50%) rotate(0deg);
     }
-
     100% {
         transform: translate(-50%, -50%) rotate(360deg);
     }
@@ -60,13 +64,11 @@ div#aHider,
     0% {
         transform: translate(-50%, -50%) rotate(360deg);
     }
-
     100% {
         transform: translate(-50%, -50%) rotate(0deg);
     }
 }
 
-/*--- Ã¢â€ â€˜ Animation Ã¢â€ â€˜ --- */
 /* --- Font --- */
 @font-face {
     font-family: gamefont;
@@ -229,140 +231,7 @@ div#aHider,
         U+FEFF, U+FFFD;
 }
 
-/* --- Ã¢â€ â€˜ Font Ã¢â€ â€˜ --- */
-/* --- Ã¢â€ â€œ Loading Screen Ã¢â€ â€œ --- */
-
-#loadTipsHolder {
-    font-size: 0;
-    position: fixed;
-    background: transparent;
-    top: 50%;
-    bottom: 50%;
-}
-
-#loadTipsHolder:after {
-    content: "Loading";
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position: fixed;
-    font-size: 30px;
-}
-
-.lC-sides,
-.lC-sides * {
-    animation: unset;
-    transform: unset;
-}
-
-.lC-t {
-    font-size: 0;
-    height: 300px;
-    width: 300px;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 4px dashed var(--color-3);
-    border-bottom: 4px dashed var(--color-3);
-    padding: unset !important;
-    top: 50%;
-    left: 50%;
-    border-radius: 50%;
-    background: transparent;
-    position: fixed;
-    animation: loadRotate infinite 8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.lC-r {
-    font-size: 0;
-    height: 400px;
-    width: 400px;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 4px dashed var(--color-3);
-    border-bottom: 4px dashed var(--color-3);
-    padding: unset !important;
-    top: 50%;
-    left: 50%;
-    border-radius: 50%;
-    background: transparent;
-    position: fixed;
-    animation: loadRotate infinite 8s reverse cubic-bezier(0.4, 0, 1, 1);
-}
-
-.lC-bt {
-    height: 500px;
-    width: 500px;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px dotted var(--color-4);
-    border-bottom: 6px dotted var(--color-4);
-    padding: unset !important;
-    top: 50%;
-    left: 50%;
-    border-radius: 100%;
-    background: transparent;
-    position: fixed;
-    transform-origin: unset !important;
-    animation: loadRotate infinite 18s ease-in-out reverse;
-}
-
-.lC-f {
-    font-size: 0;
-    height: 600px;
-    width: 600px;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 4px dashed var(--color-3);
-    border-bottom: 4px dashed var(--color-3);
-    padding: unset !important;
-    top: 50%;
-    left: 50%;
-    border-radius: 50%;
-    background: transparent;
-    position: fixed;
-    animation: loadRotate infinite 12s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.lC-b {
-    font-size: 0;
-    height: 700px;
-    width: 700px;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 4px solid var(--color-2);
-    border-bottom: 4px solid var(--color-2);
-    padding: unset !important;
-    top: 50%;
-    left: 50%;
-    border-radius: 50%;
-    background: transparent;
-    position: fixed;
-    transform-origin: unset !important;
-    animation: loadRotate infinite 6s ease-in-out;
-}
-
-.lC-l {
-    font-size: 0;
-    height: 800px;
-    width: 800px;
-    border-left: 4px solid var(--color-4);
-    border-right: 4px solid var(--color-4);
-    border-top: 4px solid transparent;
-    border-bottom: 4px solid transparent;
-    padding: unset !important;
-    top: 50%;
-    left: 50%;
-    border-radius: 50%;
-    background: transparent;
-    position: fixed;
-    transform-origin: unset !important;
-    animation: loadRotate infinite 4s cubic-bezier(0.68, -0.55, 0.27, 1.55)
-        reverse;
-}
-
-/* Ã¢â€ â€˜Loading ScreenÃ¢â€ â€˜ */
-/* --- Ã¢â€ â€œ Main Menu Ã¢â€ â€œ ---*/
-/* Left Bar */
+/* --- Main Menu --- */
 #menuItemContainer {
     top: unset;
     height: 180px;
@@ -422,7 +291,6 @@ div#menuBtnShop:before {
     height: 100px;
     width: 100px;
     background: transparent;
-    /* background:red; */
     box-shadow: -50px 50px var(--color-5);
     border-radius: 100%;
 }
@@ -435,12 +303,10 @@ div#menuBtnShop:before {
     height: 100px;
     width: 100px;
     background: transparent;
-    /* background:red; */
     box-shadow: 50px 50px var(--color-5);
     border-radius: 100%;
 }
 
-/* Top Button */
 #subLogoButtons {
     display: flex;
     background: var(--color-5);
@@ -474,13 +340,11 @@ div#menuBtnShop:before {
     border: unset !important;
     padding: unset !important;
     font-size: 25px !important;
-    background: var(--color-1);
 }
 
 #subLogoButtons .button:before {
     font-size: 60px !important;
     font-family: "Material Icons Outlined";
-    font-size: 60px !important;
     line-height: 50px !important;
     color: var(--color-3) !important;
     margin-top: 10px;
@@ -531,10 +395,31 @@ div#menuBtnJoin:before {
     color: white !important;
 }
 
-/* Account */
+#instructions {
+    font-size: 0 !important;
+    animation: unset !important;
+}
+
+#instructions:after {
+    content: "- G.O.A.T -";
+    font-size: 30px !important;
+}
+
+/* --- Header & Account --- */
 .headerBarLeft {
     z-index: 1;
     border: unset !important;
+}
+
+#signedOutHeaderBar {
+    background: var(--color-1);
+    top: 0;
+    height: 150px;
+    display: flex;
+    margin: 10px;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
 }
 
 #signedOutHeaderBar .button.lgn span {
@@ -550,17 +435,6 @@ div#menuBtnJoin:before {
     align-items: center;
     justify-content: center;
     flex-direction: column-reverse;
-}
-
-#signedOutHeaderBar {
-    background: var(--color-1);
-    top: 0;
-    height: 150px;
-    display: flex;
-    margin: 10px;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
 }
 
 #signedOutHeaderBar:hover {
@@ -589,6 +463,10 @@ div#menuBtnJoin:before {
     background: transparent;
 }
 
+#menuAccountUsername {
+    border: unset;
+}
+
 .progressBar {
     position: absolute;
     width: calc(100% - 50px);
@@ -597,7 +475,30 @@ div#menuBtnJoin:before {
     bottom: 20px;
 }
 
-/* Chat */
+#altManagerBtn {
+    color: #fff;
+    flex-grow: 1;
+    display: flex;
+    transition: all 0.1s;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    pointer-events: all;
+    cursor: pointer;
+    background: var(--color-1);
+    width: calc((60% / 8) - 10px) !important;
+    margin: 15px 5px;
+    margin-top: 10px !important;
+    flex-grow: unset;
+    border-radius: 20px;
+    height: unset;
+    border: unset !important;
+    padding: unset !important;
+    font-size: 25px !important;
+}
+
+/* --- Chat --- */
 #uiBase.onMenu div#chatUI * {
     z-index: 10;
 }
@@ -605,6 +506,10 @@ div#menuBtnJoin:before {
 #uiBase.onMenu #chatHolder {
     left: 30px;
     bottom: 200px !important;
+}
+
+#uiBase.onGame #chatHolder {
+    bottom: 150px !important;
 }
 
 #chatHolder {
@@ -615,23 +520,23 @@ div#menuBtnJoin:before {
     background: var(--color-1);
 }
 
-#chatList div[id*="chatMsg"] {
-    background: var(--color-1);
-    margin-top: 6px;
-    border-radius: unset;
-}
-
 #chatList {
     border-radius: unset;
     background: transparent;
     -webkit-mask-image: linear-gradient(0deg, black, white, black, transparent);
 }
 
+#chatList div[id*="chatMsg"] {
+    background: var(--color-1);
+    margin-top: 6px;
+    border-radius: unset;
+}
+
 #chatList::-webkit-scrollbar {
     display: none;
 }
 
-/* Customize */
+/* --- Customize & Class Preview --- */
 #menuClassContainer {
     transform: unset;
 }
@@ -705,6 +610,10 @@ div#menuBtnJoin:before {
     align-items: center;
 }
 
+#customizeButton[onclick="playSelect(.1),showWindow(3)"] {
+    right: 160px;
+}
+
 #customizeButton span {
     margin: unset !important;
     color: var(--color-3) !important;
@@ -726,7 +635,7 @@ div#menuBtnJoin:before {
     display: none !important;
 }
 
-/* Top left bar */
+/* --- Top left bar --- */
 .headerBarRight {
     top: 180px;
     background: var(--color-5);
@@ -786,7 +695,7 @@ div#menuBtnJoin:before {
     margin-left: 5px;
 }
 
-/* Menu Window */
+/* --- Menu Window --- */
 #menuWindow.dark {
     max-height: unset;
     top: 0;
@@ -802,6 +711,35 @@ div#menuBtnJoin:before {
     border: unset;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px !important;
+}
+
+#windowHolder.popupWin[style*="display: none;"],
+#windowHolder.popupWin[style*="display:none;"] {
+    background: rgba(0, 0, 0, 0);
+    transform: translate(120%);
+    transition: all 0.2s;
+    display: block !important;
+    visibility: hidden;
+}
+
+#windowHolder.popupWin[style*="display: block;"],
+#windowHolder.popupWin[style*="display:block;"] {
+    background: rgba(0, 0, 0, 0.9) !important;
+    display: block !important;
+    transform: translate(0%);
+    transition: all 0.2s;
+}
+
+#windowHeader {
+    display: block !important;
+    position: fixed;
+    left: 40px;
+    top: 50%;
+    color: var(--color-6);
+    font-size: 50px;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    text-shadow: 0 0 10px var(--color-3);
+    font-weight: 700 !important;
 }
 
 .settingsHeader {
@@ -881,6 +819,7 @@ div#menuBtnJoin:before {
 #settingsTabLayout {
     display: flex;
     flex-direction: column;
+    background: transparent;
 }
 
 .settingsHeader
@@ -888,6 +827,10 @@ div#menuBtnJoin:before {
     float: unset !important;
     text-align: center !important;
     width: 100%;
+}
+
+.settingsHeader div[style="display:inline-block;width:220px;"] {
+    width: 80% !important;
 }
 
 .settingTab {
@@ -913,10 +856,6 @@ select#settingsPreset {
     height: 30px;
 }
 
-#settingsTabLayout {
-    background: transparent;
-}
-
 .setHed span {
     display: none;
 }
@@ -940,8 +879,6 @@ select#settingsPreset {
     align-items: center;
     justify-content: space-between;
     margin-right: -10%;
-    /* width: 95%; */
-    /* float: right; */
     margin-bottom: 10px !important;
 }
 
@@ -951,13 +888,7 @@ select#settingsPreset {
     width: 100%;
     float: unset !important;
     padding: 0px 10px;
-    /* margin-left: auto; */
-    /* margin-right: auto; */
     margin-top: 10px;
-}
-
-.settingsHeader div[style="display:inline-block;width:220px;"] {
-    width: 80% !important;
 }
 
 .setBodH {
@@ -992,7 +923,6 @@ select#settingsPreset {
     border-radius: 100px;
     background: transparent !important;
     border: 2px var(--color-5) solid;
-    top: unset;
     top: 0;
     left: 28px;
 }
@@ -1001,7 +931,6 @@ input:checked + .slider:before {
     background: lime;
     top: 4px;
     left: 4px;
-    transform: unset;
     height: 20px;
     border-radius: 100px;
     width: 20px;
@@ -1012,28 +941,10 @@ input:checked + .slider:before {
     background-color: red;
     top: 4px;
     left: 4px;
-    transform: unset;
     height: 20px;
     border-radius: 100px;
     width: 20px;
     transform: rotateX(0deg);
-}
-
-#windowHolder.popupWin[style*="display: none;"],
-#windowHolder.popupWin[style*="display:none;"] {
-    background: rgba(0, 0, 0, 0);
-    transform: translate(120%);
-    transition: all 0.2s;
-    display: block !important;
-    visibility: hidden;
-}
-
-#windowHolder.popupWin[style*="display: block;"],
-#windowHolder.popupWin[style*="display:block;"] {
-    background: rgba(0, 0, 0, 0.9) !important;
-    display: block !important;
-    transform: translate(0%);
-    transition: all 0.2s;
 }
 
 .bigMenTabs {
@@ -1095,18 +1006,6 @@ input:checked + .slider:before {
     );
 }
 
-#windowHeader {
-    display: block !important;
-    position: fixed;
-    left: 40px;
-    top: 50%;
-    color: var(--color-6);
-    font-size: 50px;
-    transform: translate(-50%, -50%) rotate(-90deg);
-    text-shadow: 0 0 10px var(--color-3);
-    font-weight: 700 !important;
-}
-
 .chalCard:last-of-type {
     margin-bottom: 100px;
 }
@@ -1122,7 +1021,6 @@ input:checked + .slider:before {
     position: fixed;
     right: calc(70% + 60px);
     display: flex;
-    transform: unset;
     flex-direction: column;
     padding: 15px !important;
     left: unset;
@@ -1209,22 +1107,186 @@ input:checked + .slider:before {
 .classLvl {
     top: unset;
     bottom: 10px;
-    right: unset;
-    left: unset;
     margin-left: 10px;
     margin-right: auto;
 }
 
-#instructions {
-    font-size: 0 !important;
-    animation: unset !important;
+/* --- HUD & In-game --- */
+#timerDisplay {
+    position: fixed;
+    left: 50%;
+    top: 100px;
+    transform: translate(-50%);
+    background: transparent;
 }
 
-#instructions:after {
-    content: "- G.O.A.T -";
-    font-size: 30px !important;
+#timerDisplay img {
+    display: none !important;
 }
 
+#timerVal {
+    font-weight: 700 !important;
+    font-size: var(--time-font);
+    color: var(--color-3);
+    text-shadow:
+        0 0 0 var(--color-5),
+        1px 0 0 var(--color-5),
+        -1px 0 var(--color-5),
+        0 -1px var(--color-5),
+        0 1px var(--color-5),
+        1px 1px var(--color-5),
+        1px -1px var(--color-5),
+        -1px 1px var(--color-5),
+        -1px -1px var(--color-5),
+        0 2px var(--color-5),
+        0 -2px var(--color-5),
+        2px 0 var(--color-5),
+        -2px 0 var(--color-5),
+        1px 2px var(--color-5),
+        -1px 2px var(--color-5),
+        1px -2px var(--color-5),
+        -1px -2px var(--color-5),
+        2px 2px var(--color-5),
+        -2px 2px var(--color-5),
+        2px -2px var(--color-5),
+        -2px -2px var(--color-5),
+        0 0 2px var(--color-5),
+        0 0 2px var(--color-5),
+        0 0 2px var(--color-5);
+}
+
+#healthBar {
+    display: flex;
+    width: 300px;
+    display: none;
+}
+
+#healthBar * {
+    margin: unset;
+    box-shadow: unset;
+    width: -webkit-fill-available;
+    border-radius: unset;
+}
+
+#healthValue {
+    font-size: var(--font) !important;
+    position: fixed;
+    bottom: var(--y);
+    left: var(--x);
+    font-weight: 700 !important;
+    text-shadow:
+        -3px 3px 4px var(--color-3),
+        -6px 6px 2px var(--color-4);
+}
+
+#maxHP,
+#challIcon {
+    display: none;
+}
+
+#healthValueHolder {
+    background: transparent;
+}
+
+#ammoDisplay:not([style*="background-size: 0%;"]):before {
+    content: "sync";
+    position: fixed;
+    left: 50%;
+    top: calc(50% + 40px);
+    font-size: 40px;
+    bottom: unset;
+    color: var(--color-6);
+    transform: translate(-50%, -50%);
+    font-family: Material Icons Outlined;
+    animation: loadRotate 2s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+#ammoDisplay {
+    transform: unset;
+    background: transparent;
+}
+
+#ammoIcon {
+    display: none;
+}
+
+#ammoMax {
+    font-size: 25px;
+    margin-right: 10px;
+    display: none;
+}
+
+#ammoVal {
+    font-size: var(--font) !important;
+    position: fixed;
+    bottom: var(--y);
+    right: var(--x);
+    font-weight: 700 !important;
+    text-shadow:
+        3px 3px 4px var(--color-3),
+        6px 6px 2px var(--color-4);
+}
+
+.weapIcon {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    filter: brightness(0) drop-shadow(0 0 5px var(--color-6));
+    transition: 0.2s;
+}
+
+.weapItem[style="opacity:1"] .weapIcon,
+.weapItem[style="opacity: 1;"] .weapIcon {
+    transform: translate(-50%, 0);
+}
+
+.weapItem[style="opacity:0.5"] .weapIcon,
+.weapItem[style="opacity: 0.5;"] .weapIcon {
+    transform: translate(-50%, 100px);
+}
+
+.weapKey {
+    display: none;
+}
+
+div#igXPBar {
+    display: none !important;
+}
+
+#reloadMsg {
+    bottom: 40%;
+    border: unset;
+    box-shadow: unset;
+    background: transparent;
+    color: var(--color-4);
+    font-weight: 600 !important;
+    font-size: 0;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#reloadMsg:after {
+    font-size: 25px;
+    content: "No Ammo!";
+}
+
+#topMidHold {
+    transform-origin: top center;
+}
+
+#matchInfoHolder {
+    position: fixed;
+    bottom: 50px;
+    left: 30px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column-reverse;
+    font-size: 20px;
+}
+
+/* --- Spectate --- */
 #uiBase.onMenu #spectateUI {
     display: block !important;
     position: fixed;
@@ -1254,7 +1316,8 @@ input:checked + .slider:before {
 #uiBase.onMenu #specSus,
 #uiBase.onMenu #specTeam1,
 #uiBase.onMenu #specGMessage,
-#uiBase.onMenu #specGameInfo {
+#uiBase.onMenu #specGameInfo,
+#uiBase.onMenu div#specControlHolder {
     display: none !important;
 }
 
@@ -1338,240 +1401,4 @@ label.switchsml {
     box-shadow: -10px 10px var(--color-5);
     background: transparent;
     content: "";
-}
-
-#ammoDisplay:not([style*="background-size: 0%;"]):before {
-    content: "sync";
-    position: fixed;
-    left: 50%;
-    top: calc(50% + 40px);
-    font-size: 40px;
-    bottom: unset;
-    color: var(--color-6);
-    transform: translate(-50%, -50%);
-    font-family: Material Icons Outlined;
-    animation: loadRotate 2s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
-
-#ammoDisplay {
-    transform: unset;
-}
-
-#ammoDisplay {
-    background: transparent;
-}
-
-#ammoIcon {
-    display: none;
-}
-
-#ammoMax {
-    font-size: 25px;
-    margin-right: 10px;
-    display: none;
-}
-
-#ammoVal {
-    font-size: var(--font) !important;
-    position: fixed;
-    bottom: var(--y);
-    right: var(--x);
-    font-weight: 700 !important;
-    text-shadow:
-        3px 3px 4px var(--color-3),
-        6px 6px 2px var(--color-4);
-}
-
-.weapIcon {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translate(-50%);
-    filter: brightness(0) drop-shadow(0 0 5px var(--color-6));
-    transition: 0.2s;
-}
-
-.weapItem[style="opacity:1"] .weapIcon,
-.weapItem[style="opacity: 1;"] .weapIcon {
-    transform: translate(-50%, 0);
-}
-
-.weapItem[style="opacity:0.5"] .weapIcon,
-.weapItem[style="opacity: 0.5;"] .weapIcon {
-    transform: translate(-50%, 100px);
-}
-
-.weapKey {
-    display: none;
-}
-
-div#igXPBar {
-    display: none !important;
-}
-
-#timerDisplay {
-    position: fixed;
-    left: 50%;
-    top: 100px;
-    transform: translate(-50%);
-    background: transparent;
-}
-
-#timerDisplay img {
-    display: none !important;
-}
-
-#timerVal {
-    font-weight: 700 !important;
-    font-size: var(--time-font);
-    color: var(--color-3);
-    text-shadow:
-        0 0 0 var(--color-5),
-        1px 0 0 var(--color-5),
-        -1px 0 var(--color-5),
-        0 -1px var(--color-5),
-        0 1px var(--color-5),
-        1px 1px var(--color-5),
-        1px -1px var(--color-5),
-        -1px 1px var(--color-5),
-        -1px -1px var(--color-5),
-        0 2px var(--color-5),
-        0 -2px var(--color-5),
-        2px 0 var(--color-5),
-        -2px 0 var(--color-5),
-        1px 2px var(--color-5),
-        -1px 2px var(--color-5),
-        1px -2px var(--color-5),
-        -1px -2px var(--color-5),
-        2px 2px var(--color-5),
-        -2px 2px var(--color-5),
-        2px -2px var(--color-5),
-        -2px -2px var(--color-5),
-        0 0 2px var(--color-5),
-        0 0 2px var(--color-5),
-        0 0 2px var(--color-5);
-}
-
-#healthBar {
-    display: flex;
-    width: 300px;
-    display: none;
-}
-
-#healthBar * {
-    margin: unset;
-    box-shadow: unset;
-    width: -webkit-fill-available;
-    border-radius: unset;
-}
-
-#healthValue {
-    font-size: var(--font) !important;
-    position: fixed;
-    bottom: var(--y);
-    left: var(--x);
-    font-weight: 700 !important;
-    text-shadow:
-        -3px 3px 4px var(--color-3),
-        -6px 6px 2px var(--color-4);
-}
-
-#maxHP,
-#challIcon {
-    display: none;
-}
-
-#healthValueHolder {
-    background: transparent;
-}
-
-#reloadMsg {
-    bottom: 40%;
-    border: unset;
-    box-shadow: unset;
-    background: transparent;
-    color: var(--color-4);
-    font-weight: 600 !important;
-    font-size: 0;
-}
-
-#reloadMsg:after {
-    font-size: 25px;
-    content: "No Ammo!";
-}
-
-/* Chat */
-#uiBase.onGame #chatHolder {
-    bottom: 150px !important;
-}
-
-#topMidHold {
-    transform-origin: top center;
-}
-
-#uiBase.onMenu div#specControlHolder {
-    display: none;
-}
-
-#altManagerBtn {
-    color: #fff;
-    flex-grow: 1;
-    display: flex;
-    transition: all 0.1s;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    pointer-events: all;
-    cursor: pointer;
-    background: var(--color-1);
-    width: calc((60% / 8) - 10px) !important;
-    margin: 15px 5px;
-    margin-top: 10px !important;
-    flex-grow: unset;
-    border-radius: 20px;
-    height: unset;
-    border: unset !important;
-    padding: unset !important;
-    font-size: 25px !important;
-    background: var(--color-1);
-}
-
-#signupRewardsButton {
-    display: none !important;
-}
-
-#matchInfoHolder {
-    position: fixed;
-    flex-direction: row;
-    font-size: 20px;
-    bottom: 50px;
-    left: 30px;
-    z-index: 100;
-    display: flex;
-    flex-direction: column-reverse;
-}
-
-#customizeButton[onclick="playSelect(.1),showWindow(3)"] {
-    right: 160px;
-}
-
-#notificationCenter {
-    display: none;
-}
-
-#menuLvlHold {
-    display: none;
-}
-
-#menuMiniProfilePic {
-    display: none;
-}
-
-#menuAccountUsername {
-    border: unset;
-}
-.main-menu-button-container.svelte-f3amho,
-.menuItemRankedLabel {
-    display: none;
 }
