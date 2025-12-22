@@ -2,7 +2,8 @@
 /* Created by NamekujiLSDs#7777*/
 
 /* Last edit 29 Jan 2022 */
-
+/*↑誰？このクソフォーマット使ってるの。死ねよ*/
+/* Last edit 2025/12/12 */
 :root {
     --color-1: #202020;
     --color-2: #aaa;
@@ -71,18 +72,22 @@ div#aHider,
     font-family: gamefont;
     font-style: normal;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2zE0YBB.woff2) format("woff2");
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
-        U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2zE0YBB.woff2)
+        format("woff2");
+    unicode-range:
+        U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF,
+        U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
     font-family: gamefont;
     font-style: normal;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2LE0Q.woff2) format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-        U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2LE0Q.woff2)
+        format("woff2");
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
         U+FEFF, U+FFFD;
 }
 
@@ -90,18 +95,22 @@ div#aHider,
     font-family: gamefont;
     font-style: normal;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2zE0YBB.woff2) format("woff2");
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
-        U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2zE0YBB.woff2)
+        format("woff2");
+    unicode-range:
+        U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF,
+        U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
     font-family: gamefont;
     font-style: normal;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2LE0Q.woff2) format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-        U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2LE0Q.woff2)
+        format("woff2");
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
         U+FEFF, U+FFFD;
 }
 
@@ -109,18 +118,22 @@ div#aHider,
     font-family: gamefont;
     font-style: normal;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2zE0YBB.woff2) format("woff2");
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
-        U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2zE0YBB.woff2)
+        format("woff2");
+    unicode-range:
+        U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF,
+        U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
     font-family: gamefont;
     font-style: normal;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2LE0Q.woff2) format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-        U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2LE0Q.woff2)
+        format("woff2");
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
         U+FEFF, U+FFFD;
 }
 
@@ -128,18 +141,22 @@ div#aHider,
     font-family: gamefont;
     font-style: normal;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2zE0YBB.woff2) format("woff2");
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
-        U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2zE0YBB.woff2)
+        format("woff2");
+    unicode-range:
+        U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF,
+        U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
     font-family: gamefont;
     font-style: normal;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2LE0Q.woff2) format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-        U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2LE0Q.woff2)
+        format("woff2");
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
         U+FEFF, U+FFFD;
 }
 
@@ -147,18 +164,22 @@ div#aHider,
     font-family: gamefont;
     font-style: normal;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2zE0YBB.woff2) format("woff2");
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
-        U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2zE0YBB.woff2)
+        format("woff2");
+    unicode-range:
+        U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF,
+        U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
     font-family: gamefont;
     font-style: normal;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2LE0Q.woff2) format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-        U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2LE0Q.woff2)
+        format("woff2");
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
         U+FEFF, U+FFFD;
 }
 
@@ -166,18 +187,22 @@ div#aHider,
     font-family: gamefont;
     font-style: normal;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2zE0YBB.woff2) format("woff2");
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
-        U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2zE0YBB.woff2)
+        format("woff2");
+    unicode-range:
+        U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF,
+        U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
     font-family: gamefont;
     font-style: normal;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2LE0Q.woff2) format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-        U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2LE0Q.woff2)
+        format("woff2");
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
         U+FEFF, U+FFFD;
 }
 
@@ -185,29 +210,27 @@ div#aHider,
     font-family: gamefont;
     font-style: normal;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2zE0YBB.woff2) format("woff2");
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
-        U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2zE0YBB.woff2)
+        format("woff2");
+    unicode-range:
+        U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF,
+        U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
     font-family: gamefont;
     font-style: normal;
     font-display: swap;
-    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2LE0Q.woff2) format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-        U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    src: url(https://fonts.gstatic.com/s/oxanium/v6/RrQQboN_4yJ0JmiMe2LE0Q.woff2)
+        format("woff2");
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
         U+FEFF, U+FFFD;
 }
 
 /* --- Ã¢â€ â€˜ Font Ã¢â€ â€˜ --- */
 /* --- Ã¢â€ â€œ Loading Screen Ã¢â€ â€œ --- */
-#initLoader {
-    transform: unset;
-    background: url(data:image/png;base64,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);
-    background-position: center;
-    background-size: 100%;
-}
 
 #loadTipsHolder {
     font-size: 0;
@@ -333,7 +356,8 @@ div#aHider,
     background: transparent;
     position: fixed;
     transform-origin: unset !important;
-    animation: loadRotate infinite 4s cubic-bezier(0.68, -0.55, 0.27, 1.55) reverse;
+    animation: loadRotate infinite 4s cubic-bezier(0.68, -0.55, 0.27, 1.55)
+        reverse;
 }
 
 /* Ã¢â€ â€˜Loading ScreenÃ¢â€ â€˜ */
@@ -358,7 +382,9 @@ div#aHider,
 }
 
 .menuItem:hover {
-    box-shadow: 2px 2px 10px var(--color-5), 5px 5px var(--color-4);
+    box-shadow:
+        2px 2px 10px var(--color-5),
+        5px 5px var(--color-4);
 }
 
 .menuItem:hover * {
@@ -462,7 +488,9 @@ div#menuBtnShop:before {
 
 #subLogoButtons .button:hover {
     transform: unset;
-    box-shadow: 2px 2px 10px var(--color-5), 5px 5px var(--color-4);
+    box-shadow:
+        2px 2px 10px var(--color-5),
+        5px 5px var(--color-4);
 }
 
 #subLogoButtons:before {
@@ -536,7 +564,9 @@ div#menuBtnJoin:before {
 }
 
 #signedOutHeaderBar:hover {
-    box-shadow: 2px 2px 10px var(--color-5), 5px 5px var(--color-4);
+    box-shadow:
+        2px 2px 10px var(--color-5),
+        5px 5px var(--color-4);
     transition: all 0.1s;
 }
 
@@ -571,7 +601,6 @@ div#menuBtnJoin:before {
 #uiBase.onMenu div#chatUI * {
     z-index: 10;
 }
-
 
 #uiBase.onMenu #chatHolder {
     left: 30px;
@@ -685,7 +714,9 @@ div#menuBtnJoin:before {
 
 #policeButton:hover,
 #customizeButton:hover {
-    box-shadow: 2px 2px 10px var(--color-5), 5px 5px var(--color-4);
+    box-shadow:
+        2px 2px 10px var(--color-5),
+        5px 5px var(--color-4);
     transition: all 0.1s;
 }
 
@@ -736,7 +767,6 @@ div#menuBtnJoin:before {
 .headerBarRight * {
     color: var(--color-3) !important;
 }
-
 
 .menuDebugInfo {
     display: flex;
@@ -853,7 +883,8 @@ div#menuBtnJoin:before {
     flex-direction: column;
 }
 
-.settingsHeader div[style="display:inline-block;text-align:right;float:right;"] {
+.settingsHeader
+    div[style="display:inline-block;text-align:right;float:right;"] {
     float: unset !important;
     text-align: center !important;
     width: 100%;
@@ -868,9 +899,11 @@ div#menuBtnJoin:before {
 .dark .tabANew,
 .dark .tabANew:hover {
     border: unset !important;
-    background: linear-gradient(to right,
-            var(--color-5) 0% calc(100% - 10px),
-            var(--color-3) 0% 100%);
+    background: linear-gradient(
+        to right,
+        var(--color-5) 0% calc(100% - 10px),
+        var(--color-3) 0% 100%
+    );
 }
 
 select#settingsPreset {
@@ -948,7 +981,9 @@ select#settingsPreset {
     padding: unset !important;
     border-radius: 100%;
     background: var(--color-3);
-    box-shadow: 0 0 5px var(--color-5), 0 0 10px var(--color-6);
+    box-shadow:
+        0 0 5px var(--color-5),
+        0 0 10px var(--color-6);
 }
 
 .slider {
@@ -962,7 +997,7 @@ select#settingsPreset {
     left: 28px;
 }
 
-input:checked+.slider:before {
+input:checked + .slider:before {
     background: lime;
     top: 4px;
     left: 4px;
@@ -1053,9 +1088,11 @@ input:checked+.slider:before {
 .bigMenTabA {
     width: 90%;
     border-bottom: unset;
-    background: linear-gradient(to right,
-            var(--color-5) 0% calc(100% - 10px),
-            var(--color-3) 0% 100%);
+    background: linear-gradient(
+        to right,
+        var(--color-5) 0% calc(100% - 10px),
+        var(--color-3) 0% 100%
+    );
 }
 
 #windowHeader {
@@ -1128,9 +1165,11 @@ input:checked+.slider:before {
 .selectorItem.selectedItem {
     width: 90%;
     border-bottom: unset;
-    background: linear-gradient(to right,
-            var(--color-5) 0% calc(100% - 10px),
-            var(--color-3) 0% 100%) !important;
+    background: linear-gradient(
+        to right,
+        var(--color-5) 0% calc(100% - 10px),
+        var(--color-3) 0% 100%
+    ) !important;
 }
 
 .selectorItem {
@@ -1155,14 +1194,16 @@ input:checked+.slider:before {
 }
 
 .classCard:hover {
-    background: linear-gradient(20deg,
-            var(--color-3) 0% 5%,
-            var(--color-5) 5% 10%,
-            var(--color-3) 10% 15%,
-            var(--color-5) 15% 85%,
-            var(--color-3) 85% 90%,
-            var(--color-5) 90% 95%,
-            var(--color-3) 95% 100%);
+    background: linear-gradient(
+        20deg,
+        var(--color-3) 0% 5%,
+        var(--color-5) 5% 10%,
+        var(--color-3) 10% 15%,
+        var(--color-5) 15% 85%,
+        var(--color-3) 85% 90%,
+        var(--color-5) 90% 95%,
+        var(--color-3) 95% 100%
+    );
 }
 
 .classLvl {
@@ -1336,7 +1377,9 @@ label.switchsml {
     bottom: var(--y);
     right: var(--x);
     font-weight: 700 !important;
-    text-shadow: 3px 3px 4px var(--color-3), 6px 6px 2px var(--color-4);
+    text-shadow:
+        3px 3px 4px var(--color-3),
+        6px 6px 2px var(--color-4);
 }
 
 .weapIcon {
@@ -1350,13 +1393,11 @@ label.switchsml {
 
 .weapItem[style="opacity:1"] .weapIcon,
 .weapItem[style="opacity: 1;"] .weapIcon {
-
     transform: translate(-50%, 0);
 }
 
 .weapItem[style="opacity:0.5"] .weapIcon,
 .weapItem[style="opacity: 0.5;"] .weapIcon {
-
     transform: translate(-50%, 100px);
 }
 
@@ -1384,14 +1425,30 @@ div#igXPBar {
     font-weight: 700 !important;
     font-size: var(--time-font);
     color: var(--color-3);
-    text-shadow: 0 0 0 var(--color-5), 1px 0 0 var(--color-5),
-        -1px 0 var(--color-5), 0 -1px var(--color-5), 0 1px var(--color-5),
-        1px 1px var(--color-5), 1px -1px var(--color-5), -1px 1px var(--color-5),
-        -1px -1px var(--color-5), 0 2px var(--color-5), 0 -2px var(--color-5),
-        2px 0 var(--color-5), -2px 0 var(--color-5), 1px 2px var(--color-5),
-        -1px 2px var(--color-5), 1px -2px var(--color-5), -1px -2px var(--color-5),
-        2px 2px var(--color-5), -2px 2px var(--color-5), 2px -2px var(--color-5),
-        -2px -2px var(--color-5), 0 0 2px var(--color-5), 0 0 2px var(--color-5),
+    text-shadow:
+        0 0 0 var(--color-5),
+        1px 0 0 var(--color-5),
+        -1px 0 var(--color-5),
+        0 -1px var(--color-5),
+        0 1px var(--color-5),
+        1px 1px var(--color-5),
+        1px -1px var(--color-5),
+        -1px 1px var(--color-5),
+        -1px -1px var(--color-5),
+        0 2px var(--color-5),
+        0 -2px var(--color-5),
+        2px 0 var(--color-5),
+        -2px 0 var(--color-5),
+        1px 2px var(--color-5),
+        -1px 2px var(--color-5),
+        1px -2px var(--color-5),
+        -1px -2px var(--color-5),
+        2px 2px var(--color-5),
+        -2px 2px var(--color-5),
+        2px -2px var(--color-5),
+        -2px -2px var(--color-5),
+        0 0 2px var(--color-5),
+        0 0 2px var(--color-5),
         0 0 2px var(--color-5);
 }
 
@@ -1414,7 +1471,9 @@ div#igXPBar {
     bottom: var(--y);
     left: var(--x);
     font-weight: 700 !important;
-    text-shadow: -3px 3px 4px var(--color-3), -6px 6px 2px var(--color-4);
+    text-shadow:
+        -3px 3px 4px var(--color-3),
+        -6px 6px 2px var(--color-4);
 }
 
 #maxHP,
@@ -1490,7 +1549,7 @@ div#igXPBar {
     left: 30px;
     z-index: 100;
     display: flex;
-    flex-direction: column-reverse
+    flex-direction: column-reverse;
 }
 
 #customizeButton[onclick="playSelect(.1),showWindow(3)"] {
@@ -1498,7 +1557,7 @@ div#igXPBar {
 }
 
 #notificationCenter {
-    display: none
+    display: none;
 }
 
 #menuLvlHold {
@@ -1511,4 +1570,8 @@ div#igXPBar {
 
 #menuAccountUsername {
     border: unset;
+}
+.main-menu-button-container.svelte-f3amho,
+.menuItemRankedLabel {
+    display: none;
 }
