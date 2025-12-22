@@ -94,6 +94,9 @@ const ezcss = () => {
     log.info("type:", typeof settings["Customize"]["urlCss"]["value"]);
     switch (settings["Customize"]["ezcss"]["value"]) {
       case "disabled": {
+        try {
+          document.getElementById("ezCssHolder").setAttribute("href", "");
+        } catch {}
         break;
       }
       case "local": {
