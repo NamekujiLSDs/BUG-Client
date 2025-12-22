@@ -16,7 +16,7 @@ module.exports = {
         altManager: {
             title: "Show AltManager",
             type: "cb",
-            get value() { return config.get("altManager") ?? true; },
+            get value() { return config.get("altManager") ?? true; }
         },
         menuTimer: {
             title: "Menu Timer",
@@ -85,9 +85,9 @@ module.exports = {
                 local: "Local",
                 url: "URL",
                 custom1: "BUG Theme",
-                custom2: "Chroma's Vanilla Plus",
-                custom3: "MTZ",
-                custom4: "custom 4",
+                custom2: "Dopeness",
+                custom3: "MTZish",
+                custom4: "Chroma's Vanilla Plus",
                 custom5: "custom 5",
                 custom6: "custom 6",
                 custom7: "custom 7",

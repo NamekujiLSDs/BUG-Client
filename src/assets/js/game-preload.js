@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         log.info()
         const result = hookedShowWindow(...args);
 
-        if ((window.windows[0].tabIndex === 6 || document.getElementsByClassName("settingTab")[window.windows[0].tabIndex].textContent === "Client") && args === 1) {
+        if ((window.windows[0].tabIndex === 6 || document.getElementsByClassName("settingTab")[window.windows[0].tabIndex].textContent === "Client") && args === 1 || document.getElementsByClassName("tabANew")[0].textContent === "Client") {
             opensetting.renderSettingsDom()
         } else {
             log.info("else")
