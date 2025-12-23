@@ -26,7 +26,7 @@ const config = new store({
 });
 
 // DevMode
-// autoUpdater.forceDevUpdateConfig = true;
+autoUpdater.forceDevUpdateConfig = true;
 
 // DiscordRPCの作成
 const RPC = require("discord-rpc");
@@ -87,7 +87,7 @@ const makeSplashWindow = () => {
     resizable: false,
     show: false,
     title: "BUG Client",
-    icon: path.join(__dirname, './src/assets/img/icons/icon.ico'),
+    icon: path.join(__dirname, "./src/assets/img/icons/icon.ico"),
     webPreferences: {
       preload: path.join(__dirname, "./src/assets/js/splash-preload.js"),
     },
@@ -175,7 +175,7 @@ const makeGameWindow = () => {
     fullscreen: config.get("fullscreen", true),
     show: false,
     title: "BUG Client",
-    icon: path.join(__dirname, './src/assets/img/icons/icon.ico'),
+    icon: path.join(__dirname, "./src/assets/img/icons/icon.ico"),
     webPreferences: {
       preload: path.join(__dirname, "./src/assets/js/game-preload.js"),
     },
@@ -183,9 +183,9 @@ const makeGameWindow = () => {
 
   gameWindow.webContents.loadURL("https://krunker.io/");
   gameWindow.setTitle("BUG Client");
-  gameWindow.on("page-title-updated", (e => {
-    e.preventDefault()
-  }))
+  gameWindow.on("page-title-updated", (e) => {
+    e.preventDefault();
+  });
   // ショートカットキーの設定
   localShortcut.register(gameWindow, "F5", () => {
     gameWindow.reload();

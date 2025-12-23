@@ -77,7 +77,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           window.windows[0].tabIndex
         ].textContent === "Client") &&
         args === 1) ||
-      document.getElementsByClassName("tabANew")[0].textContent === "Client"
+      (document.getElementsByClassName("tabANew")[0] &&
+        document.getElementsByClassName("tabANew")[0].textContent === "Client")
     ) {
       opensetting.renderSettingsDom();
     } else {
