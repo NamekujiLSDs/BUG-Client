@@ -73,12 +73,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (
       ((window.windows[0].tabIndex === 6 ||
-        document.getElementsByClassName("settingTab")[
-          window.windows[0].tabIndex
-        ].textContent === "Client") &&
-        args === 1) ||
-      (document.getElementsByClassName("tabANew")[0] &&
-        document.getElementsByClassName("tabANew")[0].textContent === "Client")
+        document.getElementsByClassName("settingTab")[window.windows[0].tabIndex]?.textContent === "Client") && args === 1) ||
+      (document.getElementsByClassName("tabANew")[0] && document.getElementsByClassName("tabANew")[0]?.textContent === "Client")
     ) {
       opensetting.renderSettingsDom();
     } else {
@@ -92,8 +88,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const result = hookedChangeTab(...args);
     if (
       window.windows[0].tabIndex === 6 ||
-      document.getElementsByClassName("settingTab")[window.windows[0].tabIndex]
-        .textContent === "Client"
+      document.getElementsByClassName("settingTab")[window.windows[0].tabIndex]?.textContent === "Client"
     ) {
       opensetting.renderSettingsDom();
     }
