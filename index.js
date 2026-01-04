@@ -204,6 +204,9 @@ const makeGameWindow = () => {
     config.set("fullscreen", !isFullScreen);
     gameWindow.setFullScreen(!isFullScreen);
   });
+  localShortcut.register(gameWindow, "F12", () => {
+    gameWindow.webContents.openDevTools()
+  });
 
   Menu.setApplicationMenu(null);
 
